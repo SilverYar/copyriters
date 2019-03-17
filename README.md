@@ -3,4 +3,4 @@
 Учебный проект по курсу: "Проектирование архитектур ПО"
 Селиверстов Я.А. 13541/2
 
-Полное описание приведено в [Wiki](https://github.com/SilverYar/Copiriters/wiki)
+Полное описание приведено в [Wiki](https://github.com/SilverYar/copyriters/wiki)
