@@ -1,0 +1,47 @@
+<html>
+<head>
+<script 
+			  src="https://code.jquery.com/jquery-3.4.1.js"
+			  integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
+			  crossorigin="anonymous"></script>
+<script>
+</script>
+</head>
+<body>
+    <h3>Welcome {{ fio }},client(<a href="/logout">logout</a>)</h3>
+     {% if message %}
+        <div style="position: absolute; left:100px; top:10px; background-color:#c0f0c0" onclick="this.style.display='None';">
+            {{ message }}
+        </div>
+    {% endif %}
+    <table>
+    <tr>
+    <td><a href="/client/list">List applications</a></td><td><a href="/client/create">Create application</a></td>
+    </tr>
+    </table>
+    <div>
+        <div>Create application</div>
+        <form action="/client/createapp" method="POST">
+            <table>
+                <tr>
+                    <td>Caption</td>
+                    <td><input name="caption_field" type='text' /></td>
+                </tr>
+                <tr>
+                    <td>Duration(days)</td>
+                    <td><input name="duration_field" type='text' /></td>
+                </tr>
+                <tr>
+                    <td>Cost($)</td>
+                    <td><input name="cost_field" type='text' /></td>
+                </tr>
+                <tr>
+                    <td>Description</td>
+                    <td><textarea  rows="10" cols="45" name="descr_field" type='text' ></textarea></td>
+                </tr>
+                <td></td><td><input type="submit" value="Create"/></td>
+            </table>
+        </form>
+    </div>
+</body>
+</html>

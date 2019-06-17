@@ -1,0 +1,137 @@
+<html>
+<head>
+<script 
+			  src="https://code.jquery.com/jquery-3.4.1.js"
+			  integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
+			  crossorigin="anonymous"></script>
+<script>
+var list_app;
+var current_app;
+function RefreshTableApp(){
+    var tab = $("#app_table");
+    var res = $.ajax({
+			type: "GET",
+			url: "/client/listapp",
+			async: false
+		});
+    setTimeout(RefreshTableApp, 7000);
+    if (res.responseJSON.status != "Success"){
+        alert(res.responseJSON.status);
+        return
+    }
+    tab.html("");
+    data_list = res.responseJSON.data;
+    list_app=data_list;
+    for (var e in res.responseJSON.data){
+        var el = res.responseJSON.data[e];
+        if (el.state == "Placed"){
+            tab.append("<tr><td>$"+el.money+"</td><td>"+el.duration+" days</td><td>"+
+                el.caption+"</td><td>"+el.date+"</td><td>"+ el.taken_users.length+"</td><td>"+
+                el.state +"</td><td><button class='view'>View</button><button class='cancel'>"+
+                "Cancel</button></td><td style='display:none'>"+el.descr+
+                "</td><td style='display:none'>"+el.zid+"</td><tr>");
+        }
+        else{
+            tab.append("<tr><td>$"+el.money+"</td><td>"+el.duration+" days</td><td>"+
+                el.caption+"</td><td>"+el.date+"</td><td>"+ el.taken_users.length+"</td><td>"+
+                el.state +"</td><td><a href='/client/view/"+el.zid+"'>Inspect</a></td><td style='display:none'>"+el.descr+
+                "</td><td style='display:none'>"+el.zid+"</td><tr>");
+        }
+    }
+    $("#app_table button.view").click(
+        function (e){
+            current_app = e.target.parentElement.nextSibling.nextSibling.innerHTML;
+            $("#descr").val(e.target.parentElement.nextSibling.innerHTML);
+            for (var el in list_app){
+                if (list_app[el].zid == current_app ){
+                    var tab = $("#users_table");
+                    tab.html("");
+                    if (list_app[el].state == "Placed"){
+                        for(var x in list_app[el].taken_users){
+                            tab.append("<tr><td>"+list_app[el].taken_users[x].fio+
+                                            "</td><td><button class='confirm'>Confirm</button></td></tr>")
+                        }
+                    }
+                    else{
+                        for(var x in list_app[el].taken_users){
+                            tab.append("<tr><td>"+list_app[el].taken_users[x].fio+
+                                            "</td><td></td></tr>")
+                        }
+                    }
+                    break;
+                }
+            }
+        }
+    );
+    $("#users_table button.confirm").click(
+        function (e){
+            var cur = current_app;
+            var res = $.ajax({
+                type: "GET",
+                url: "/client/confirm/"+cur,
+                async: false
+            });
+            if (res.responseJSON.status != "Success"){
+                alert(res.responseJSON.status);
+                return
+            }
+            RefreshTableApp();
+        }
+    );
+    $("#app_table button.cancel").click(
+        function (e){
+            var id = e.target.parentElement.nextSibling.nextSibling.innerHTML;
+            var res = $.ajax({
+                type: "GET",
+                url: "/client/cancel/"+id,
+                async: false
+            });
+            if (res.responseJSON.status != "Success"){
+                alert(res.responseJSON.status);
+                return
+            }
+            RefreshTableApp();
+        }
+    )
+}
+$(document).ready(function(){
+    RefreshTableApp();
+});
+</script>
+</head>
+<body>
+    <h3>Welcome {{ fio }},client(<a href="/logout">logout</a>)</h3>
+    <h4>Your money is ${{ money }} with {{ holded_money }} holded</h4>
+     {% if message %}
+        <div style="position: absolute; left:100px; top:10px; background-color:#c0f0c0" onclick="this.style.display='None';">
+            {{ message }}
+        </div>
+    {% endif %}
+    <table>
+    <tr>
+    <td><a href="/client/list">List applications</a></td><td><a href="/client/create">Create application</a></td>
+    </tr>
+    </table>
+    <div>
+        <div>Your applications</div>
+         <table >
+            <thead>
+            <tr><td>Money</td><td>Duration</td><td>Caption</td><td>Creation date</td><td>Count taken</td>
+            <td>State</td><td>Actions</td></tr>
+            </thead>
+            <tbody id="app_table">
+            </tbody>
+        </table>
+    </div>
+    <div >
+        <textarea  readonly rows="10" cols="45" id="descr" type='text' ></textarea>
+        <table >
+            <thead>
+            <tr><td>FIO</td><td>Actions</td></tr>
+            </thead>
+            <tbody id="users_table">
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>

@@ -1,0 +1,98 @@
+<html>
+<head>
+<script 
+			  src="https://code.jquery.com/jquery-3.4.1.js"
+			  integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
+			  crossorigin="anonymous"></script>
+			  
+<script>
+    function ViewComments(){
+        setTimeout(ViewComments, 7000);
+        var com = $("#dialog_text");
+        var res = $.ajax({
+                type: "GET",
+                url: "/copyriter/comments/{{ data['zid'] }}",
+                async: false
+            });
+        if (res.responseJSON.status != "Success"){
+            alert(res.responseJSON.status);
+            return
+        }
+        com.val(res.responseJSON.data);
+    }
+    function MakeComment(){
+        var com = $("#dialog_mes").val();
+        var res = $.ajax({
+                type: "POST",
+                url: "/copyriter/comment/{{ data['zid'] }}",
+                data: {'mes':com},
+                async: false
+            });
+        if (res.responseJSON.status != "Success"){
+            alert(res.responseJSON.status);
+            return
+        }
+        $("#dialog_mes").val("");
+    }
+    $(document).ready(function () {
+        var psconsole = $('#dialog_text');
+        if(psconsole.length)
+            psconsole.scrollTop(psconsole[0].scrollHeight - psconsole.height());
+        ViewComments();
+        $("#make_comment").click(function(e){
+            MakeComment();
+        });
+    });
+</script>
+</head>
+<body>
+    <h3>Welcome {{ fio }},copyriter(<a href="/logout">logout</a>)</h3>
+    <div>
+        {% if message %}
+            <h3>{{ message }}<h3>
+        {% endif %}
+        {% if uploaded_data %}
+            <a href="/copyriter/uploads/{{ data['zid'] }}?x={{ random_number  }}">{{ uploaded_data }}</a>
+        {% endif %}
+        {% if data %}
+        <h4>{{ data['caption'] }} (${{ data['money'] }})</h4>
+            {% if data['state_zayavka'] ==  3 %}
+                <h5>Execute from {{ data['taken_at'] }} during {{ data['duration'] }} days</h5>
+            {% elif data['state_zayavka'] ==  4 %}
+                <h5>Execute from {{ data['taken_at'] }} during {{ data['duration'] }} days</h5>
+                <h5>Finished at {{ data['finat'] }}</h5>
+            {% elif data['state_zayavka'] ==  2 %}
+                <h5>Execute from {{ data['taken_at'] }} during {{ data['duration'] }} days</h5>
+                <h5>Rejected at {{ data['finat'] }}</h5>
+            {% endif %}
+            <div>
+                <textarea  readonly rows="10" cols="45" name="descr_field" type='text' id="descr">{{ data['descr'] }}</textarea>
+            </div>
+        </div>
+        {% endif %}
+        {% if data['state_zayavka'] ==  3 %}
+        <div>Pass applications</div>
+        <div>
+            <form action='/copyriter/pass' method="POST" enctype="multipart/form-data">
+                <input type='file' name="appfile"></input>
+                <input type="hidden" name='zid' value="{{ data['zid'] }}"></input>
+                <input type='submit' value='Pass'></input>
+            </form>
+        </div>
+        {% endif %}
+    <div>
+        <h4>Dialog</h4>
+        <div>
+            <textarea readonly rows="10" cols="45" id="dialog_text"></textarea>
+        </div>
+        {% if data['state_zayavka'] ==  3 %}
+        <div>
+            <textarea type="text" cols="45" id='dialog_mes' ></textarea>
+        </div>
+        <div>
+            <input   type="button" id="make_comment" value="Comment"/>
+        </div>
+        {% endif %}
+    </div>
+</body>
+</html>

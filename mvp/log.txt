@@ -1,0 +1,1304 @@
+[2019-06-03 01:09:36,642] {server.py:26} INFO - Created t_users table
+[2019-06-03 01:09:36,765] {server.py:33} INFO - Created t_roles table
+[2019-06-03 01:09:36,888] {server.py:40} INFO - Created t_states table
+[2019-06-03 01:09:37,067] {server.py:53} INFO - Created t_zakaz table
+[2019-06-03 02:01:58,066] {server.py:29} INFO - Created t_users table
+[2019-06-03 02:01:58,386] {server.py:39} INFO - Created t_roles table
+[2019-06-03 02:01:58,543] {server.py:46} INFO - Created t_states table
+[2019-06-03 02:01:58,711] {server.py:59} INFO - Created t_zakaz table
+[2019-06-03 02:02:03,250] {/usr/lib/python3.7/site-packages/flask/app.py:1761} ERROR - Exception on /register [GET]
+Traceback (most recent call last):
+  File "/usr/lib/python3.7/site-packages/sqlalchemy/engine/base.py", line 1244, in _execute_context
+    cursor, statement, parameters, context
+  File "/usr/lib/python3.7/site-packages/sqlalchemy/engine/default.py", line 550, in do_execute
+    cursor.execute(statement, parameters)
+sqlite3.IntegrityError: NOT NULL constraint failed: t_users.c_role_id
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/usr/lib/python3.7/site-packages/flask/app.py", line 2292, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/usr/lib/python3.7/site-packages/flask/app.py", line 1815, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/usr/lib/python3.7/site-packages/flask/app.py", line 1718, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/usr/lib/python3.7/site-packages/flask/_compat.py", line 35, in reraise
+    raise value
+  File "/usr/lib/python3.7/site-packages/flask/app.py", line 1813, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/usr/lib/python3.7/site-packages/flask/app.py", line 1799, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "server.py", line 96, in register
+    db['t_users'].insert(dict(c_login=login,c_password=password,c_fio=fio,c_email=email,c_role=role_index,c_reg_date=tm))
+  File "/usr/lib/python3.7/site-packages/dataset/table.py", line 80, in insert
+    res = self.db.executable.execute(self.table.insert(row))
+  File "/usr/lib/python3.7/site-packages/sqlalchemy/engine/base.py", line 988, in execute
+    return meth(self, multiparams, params)
+  File "/usr/lib/python3.7/site-packages/sqlalchemy/sql/elements.py", line 287, in _execute_on_connection
+    return connection._execute_clauseelement(self, multiparams, params)
+  File "/usr/lib/python3.7/site-packages/sqlalchemy/engine/base.py", line 1107, in _execute_clauseelement
+    distilled_params,
+  File "/usr/lib/python3.7/site-packages/sqlalchemy/engine/base.py", line 1248, in _execute_context
+    e, statement, parameters, cursor, context
+  File "/usr/lib/python3.7/site-packages/sqlalchemy/engine/base.py", line 1466, in _handle_dbapi_exception
+    util.raise_from_cause(sqlalchemy_exception, exc_info)
+  File "/usr/lib/python3.7/site-packages/sqlalchemy/util/compat.py", line 383, in raise_from_cause
+    reraise(type(exception), exception, tb=exc_tb, cause=cause)
+  File "/usr/lib/python3.7/site-packages/sqlalchemy/util/compat.py", line 128, in reraise
+    raise value.with_traceback(tb)
+  File "/usr/lib/python3.7/site-packages/sqlalchemy/engine/base.py", line 1244, in _execute_context
+    cursor, statement, parameters, context
+  File "/usr/lib/python3.7/site-packages/sqlalchemy/engine/default.py", line 550, in do_execute
+    cursor.execute(statement, parameters)
+sqlalchemy.exc.IntegrityError: (sqlite3.IntegrityError) NOT NULL constraint failed: t_users.c_role_id
+[SQL: INSERT INTO t_users (c_fio, c_password, c_login, c_email, c_reg_date, c_role) VALUES (?, ?, ?, ?, ?, ?)]
+[parameters: ('asdfasd', 'asdfasdf', 'dsfasdf', 'fasdasdf', '03.06.2019, 02:02:03', 1)]
+(Background on this error at: http://sqlalche.me/e/gkpj)
+[2019-06-03 02:29:01,174] {/usr/lib/python3.7/site-packages/flask/app.py:1761} ERROR - Exception on / [GET]
+Traceback (most recent call last):
+  File "/usr/lib/python3.7/site-packages/flask/app.py", line 2292, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/usr/lib/python3.7/site-packages/flask/app.py", line 1816, in full_dispatch_request
+    return self.finalize_request(rv)
+  File "/usr/lib/python3.7/site-packages/flask/app.py", line 1831, in finalize_request
+    response = self.make_response(rv)
+  File "/usr/lib/python3.7/site-packages/flask/app.py", line 1957, in make_response
+    'The view function did not return a valid response. The'
+TypeError: The view function did not return a valid response. The function either returned None or ended without a return statement.
+[2019-06-03 02:29:39,412] {/usr/lib/python3.7/site-packages/flask/app.py:1761} ERROR - Exception on / [GET]
+Traceback (most recent call last):
+  File "/usr/lib/python3.7/site-packages/flask/app.py", line 2292, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/usr/lib/python3.7/site-packages/flask/app.py", line 1816, in full_dispatch_request
+    return self.finalize_request(rv)
+  File "/usr/lib/python3.7/site-packages/flask/app.py", line 1831, in finalize_request
+    response = self.make_response(rv)
+  File "/usr/lib/python3.7/site-packages/flask/app.py", line 1957, in make_response
+    'The view function did not return a valid response. The'
+TypeError: The view function did not return a valid response. The function either returned None or ended without a return statement.
+[2019-06-03 02:30:01,495] {/usr/lib/python3.7/site-packages/flask/app.py:1761} ERROR - Exception on / [GET]
+Traceback (most recent call last):
+  File "/usr/lib/python3.7/site-packages/flask/app.py", line 2292, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/usr/lib/python3.7/site-packages/flask/app.py", line 1816, in full_dispatch_request
+    return self.finalize_request(rv)
+  File "/usr/lib/python3.7/site-packages/flask/app.py", line 1831, in finalize_request
+    response = self.make_response(rv)
+  File "/usr/lib/python3.7/site-packages/flask/app.py", line 1957, in make_response
+    'The view function did not return a valid response. The'
+TypeError: The view function did not return a valid response. The function either returned None or ended without a return statement.
+[2019-06-03 02:50:27,863] {/usr/lib/python3.7/site-packages/flask/app.py:1761} ERROR - Exception on /client/createapp [POST]
+Traceback (most recent call last):
+  File "/usr/lib/python3.7/site-packages/flask/app.py", line 2292, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/usr/lib/python3.7/site-packages/flask/app.py", line 1815, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/usr/lib/python3.7/site-packages/flask/app.py", line 1718, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/usr/lib/python3.7/site-packages/flask/_compat.py", line 35, in reraise
+    raise value
+  File "/usr/lib/python3.7/site-packages/flask/app.py", line 1813, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/usr/lib/python3.7/site-packages/flask/app.py", line 1799, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "server.py", line 104, in ca
+    db['t_zakaz'].insert(dict(c_uid=session['user_id'],\
+  File "/usr/lib/python3.7/site-packages/werkzeug/local.py", line 377, in <lambda>
+    __getitem__ = lambda x, i: x._get_current_object()[i]
+  File "/usr/lib/python3.7/site-packages/flask/sessions.py", line 83, in __getitem__
+    return super(SecureCookieSession, self).__getitem__(key)
+KeyError: 'user_id'
+[2019-06-03 02:51:11,515] {/usr/lib/python3.7/site-packages/flask/app.py:1761} ERROR - Exception on /client/createapp [POST]
+Traceback (most recent call last):
+  File "/usr/lib/python3.7/site-packages/flask/app.py", line 2292, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/usr/lib/python3.7/site-packages/flask/app.py", line 1816, in full_dispatch_request
+    return self.finalize_request(rv)
+  File "/usr/lib/python3.7/site-packages/flask/app.py", line 1831, in finalize_request
+    response = self.make_response(rv)
+  File "/usr/lib/python3.7/site-packages/flask/app.py", line 1957, in make_response
+    'The view function did not return a valid response. The'
+TypeError: The view function did not return a valid response. The function either returned None or ended without a return statement.
+[2019-06-03 03:17:49,359] {/usr/lib/python3.7/site-packages/flask/app.py:1761} ERROR - Exception on / [GET]
+Traceback (most recent call last):
+  File "/usr/lib/python3.7/site-packages/flask/app.py", line 2292, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/usr/lib/python3.7/site-packages/flask/app.py", line 1816, in full_dispatch_request
+    return self.finalize_request(rv)
+  File "/usr/lib/python3.7/site-packages/flask/app.py", line 1831, in finalize_request
+    response = self.make_response(rv)
+  File "/usr/lib/python3.7/site-packages/flask/app.py", line 1957, in make_response
+    'The view function did not return a valid response. The'
+TypeError: The view function did not return a valid response. The function either returned None or ended without a return statement.
+[2019-06-03 04:16:41,430] {/usr/lib/python3.7/site-packages/flask/app.py:1761} ERROR - Exception on /copyriter/trytake/1 [GET]
+Traceback (most recent call last):
+  File "/usr/lib/python3.7/site-packages/sqlalchemy/engine/base.py", line 1179, in _execute_context
+    context = constructor(dialect, self, conn, *args)
+  File "/usr/lib/python3.7/site-packages/sqlalchemy/engine/default.py", line 905, in _init_statement
+    self.cursor = self.create_cursor()
+  File "/usr/lib/python3.7/site-packages/sqlalchemy/engine/default.py", line 1038, in create_cursor
+    return self._dbapi_connection.cursor()
+  File "/usr/lib/python3.7/site-packages/sqlalchemy/pool/base.py", line 965, in cursor
+    return self.connection.cursor(*args, **kwargs)
+sqlite3.ProgrammingError: SQLite objects created in a thread can only be used in that same thread. The object was created in thread id 139763189216768 and this is thread id 139763152340736.
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/lib/python3.7/site-packages/sqlalchemy/engine/base.py", line 739, in _rollback_impl
+    self.engine.dialect.do_rollback(self.connection)
+  File "/usr/lib/python3.7/site-packages/sqlalchemy/engine/default.py", line 500, in do_rollback
+    dbapi_connection.rollback()
+sqlite3.ProgrammingError: SQLite objects created in a thread can only be used in that same thread. The object was created in thread id 139763189216768 and this is thread id 139763152340736.
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/usr/lib/python3.7/site-packages/flask/app.py", line 2292, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/usr/lib/python3.7/site-packages/flask/app.py", line 1815, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/usr/lib/python3.7/site-packages/flask/app.py", line 1718, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/usr/lib/python3.7/site-packages/flask/_compat.py", line 35, in reraise
+    raise value
+  File "/usr/lib/python3.7/site-packages/flask/app.py", line 1813, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/usr/lib/python3.7/site-packages/flask/app.py", line 1799, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "server.py", line 131, in trytake
+    res = db['t_zayavka'].find_one(c_id_copyriter=session['user_id'],c_id_zakaz=zid)
+  File "/usr/lib/python3.7/site-packages/dataset/table.py", line 505, in find_one
+    if not self.exists:
+  File "/usr/lib/python3.7/site-packages/dataset/table.py", line 41, in exists
+    return self.name in self.db
+  File "/usr/lib/python3.7/site-packages/dataset/database.py", line 147, in __contains__
+    return normalize_table_name(table_name) in self.tables
+  File "/usr/lib/python3.7/site-packages/dataset/database.py", line 142, in tables
+    return self.inspect.get_table_names(schema=self.schema)
+  File "<string>", line 2, in get_table_names
+  File "/usr/lib/python3.7/site-packages/sqlalchemy/util/deprecations.py", line 130, in warned
+    return fn(*args, **kwargs)
+  File "/usr/lib/python3.7/site-packages/sqlalchemy/engine/reflection.py", line 202, in get_table_names
+    self.bind, schema, info_cache=self.info_cache
+  File "<string>", line 2, in get_table_names
+  File "/usr/lib/python3.7/site-packages/sqlalchemy/engine/reflection.py", line 55, in cache
+    ret = fn(self, con, *args, **kw)
+  File "/usr/lib/python3.7/site-packages/sqlalchemy/dialects/sqlite/base.py", line 1536, in get_table_names
+    rs = connection.execute(s)
+  File "/usr/lib/python3.7/site-packages/sqlalchemy/engine/base.py", line 982, in execute
+    return self._execute_text(object_, multiparams, params)
+  File "/usr/lib/python3.7/site-packages/sqlalchemy/engine/base.py", line 1155, in _execute_text
+    parameters,
+  File "/usr/lib/python3.7/site-packages/sqlalchemy/engine/base.py", line 1182, in _execute_context
+    e, util.text_type(statement), parameters, None, None
+  File "/usr/lib/python3.7/site-packages/sqlalchemy/engine/base.py", line 1461, in _handle_dbapi_exception
+    self._autorollback()
+  File "/usr/lib/python3.7/site-packages/sqlalchemy/util/langhelpers.py", line 79, in __exit__
+    compat.reraise(type_, value, traceback)
+  File "/usr/lib/python3.7/site-packages/sqlalchemy/util/compat.py", line 129, in reraise
+    raise value
+  File "/usr/lib/python3.7/site-packages/sqlalchemy/engine/base.py", line 1461, in _handle_dbapi_exception
+    self._autorollback()
+  File "/usr/lib/python3.7/site-packages/sqlalchemy/engine/base.py", line 867, in _autorollback
+    self._root._rollback_impl()
+  File "/usr/lib/python3.7/site-packages/sqlalchemy/engine/base.py", line 741, in _rollback_impl
+    self._handle_dbapi_exception(e, None, None, None, None)
+  File "/usr/lib/python3.7/site-packages/sqlalchemy/engine/base.py", line 1378, in _handle_dbapi_exception
+    exc_info,
+  File "/usr/lib/python3.7/site-packages/sqlalchemy/util/compat.py", line 383, in raise_from_cause
+    reraise(type(exception), exception, tb=exc_tb, cause=cause)
+  File "/usr/lib/python3.7/site-packages/sqlalchemy/util/compat.py", line 128, in reraise
+    raise value.with_traceback(tb)
+  File "/usr/lib/python3.7/site-packages/sqlalchemy/engine/base.py", line 739, in _rollback_impl
+    self.engine.dialect.do_rollback(self.connection)
+  File "/usr/lib/python3.7/site-packages/sqlalchemy/engine/default.py", line 500, in do_rollback
+    dbapi_connection.rollback()
+sqlalchemy.exc.ProgrammingError: (sqlite3.ProgrammingError) SQLite objects created in a thread can only be used in that same thread. The object was created in thread id 139763189216768 and this is thread id 139763152340736.
+(Background on this error at: http://sqlalche.me/e/f405)
+[2019-06-08 01:26:55,785] {server.py:48} INFO - Created t_users table
+[2019-06-08 01:26:55,931] {server.py:61} INFO - Created t_zakaz table
+[2019-06-08 01:26:56,076] {server.py:70} INFO - Created t_zayavka table
+[2019-06-08 01:55:31,343] {/usr/lib/python3.7/site-packages/flask/app.py:1761} ERROR - Exception on /register [GET]
+Traceback (most recent call last):
+  File "/usr/lib/python3.7/site-packages/sqlalchemy/engine/base.py", line 1244, in _execute_context
+    cursor, statement, parameters, context
+  File "/usr/lib/python3.7/site-packages/sqlalchemy/engine/default.py", line 550, in do_execute
+    cursor.execute(statement, parameters)
+sqlite3.IntegrityError: NOT NULL constraint failed: t_users.c_id_role
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/usr/lib/python3.7/site-packages/flask/app.py", line 2292, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/usr/lib/python3.7/site-packages/flask/app.py", line 1815, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/usr/lib/python3.7/site-packages/flask/app.py", line 1718, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/usr/lib/python3.7/site-packages/flask/_compat.py", line 35, in reraise
+    raise value
+  File "/usr/lib/python3.7/site-packages/flask/app.py", line 1813, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/usr/lib/python3.7/site-packages/flask/app.py", line 1799, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "server.py", line 200, in register
+    db['t_users'].insert(dict(c_login=login,c_password=password,c_fio=fio,c_email=email,c_role_id=role_index,c_reg_date=tm))
+  File "/usr/lib/python3.7/site-packages/dataset/table.py", line 80, in insert
+    res = self.db.executable.execute(self.table.insert(row))
+  File "/usr/lib/python3.7/site-packages/sqlalchemy/engine/base.py", line 988, in execute
+    return meth(self, multiparams, params)
+  File "/usr/lib/python3.7/site-packages/sqlalchemy/sql/elements.py", line 287, in _execute_on_connection
+    return connection._execute_clauseelement(self, multiparams, params)
+  File "/usr/lib/python3.7/site-packages/sqlalchemy/engine/base.py", line 1107, in _execute_clauseelement
+    distilled_params,
+  File "/usr/lib/python3.7/site-packages/sqlalchemy/engine/base.py", line 1248, in _execute_context
+    e, statement, parameters, cursor, context
+  File "/usr/lib/python3.7/site-packages/sqlalchemy/engine/base.py", line 1466, in _handle_dbapi_exception
+    util.raise_from_cause(sqlalchemy_exception, exc_info)
+  File "/usr/lib/python3.7/site-packages/sqlalchemy/util/compat.py", line 383, in raise_from_cause
+    reraise(type(exception), exception, tb=exc_tb, cause=cause)
+  File "/usr/lib/python3.7/site-packages/sqlalchemy/util/compat.py", line 128, in reraise
+    raise value.with_traceback(tb)
+  File "/usr/lib/python3.7/site-packages/sqlalchemy/engine/base.py", line 1244, in _execute_context
+    cursor, statement, parameters, context
+  File "/usr/lib/python3.7/site-packages/sqlalchemy/engine/default.py", line 550, in do_execute
+    cursor.execute(statement, parameters)
+sqlalchemy.exc.IntegrityError: (sqlite3.IntegrityError) NOT NULL constraint failed: t_users.c_id_role
+[SQL: INSERT INTO t_users (c_fio, c_password, c_login, c_email, c_reg_date, c_role_id) VALUES (?, ?, ?, ?, ?, ?)]
+[parameters: ('aaaaa', 'aaaaa', 'aaaaa', 'aaaaa', '08.06.2019, 01:55:31', 1)]
+(Background on this error at: http://sqlalche.me/e/gkpj)
+[2019-06-08 01:58:06,776] {/usr/lib/python3.7/site-packages/flask/app.py:1761} ERROR - Exception on / [GET]
+Traceback (most recent call last):
+  File "/usr/lib/python3.7/site-packages/flask/app.py", line 2292, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/usr/lib/python3.7/site-packages/flask/app.py", line 1816, in full_dispatch_request
+    return self.finalize_request(rv)
+  File "/usr/lib/python3.7/site-packages/flask/app.py", line 1831, in finalize_request
+    response = self.make_response(rv)
+  File "/usr/lib/python3.7/site-packages/flask/app.py", line 1957, in make_response
+    'The view function did not return a valid response. The'
+TypeError: The view function did not return a valid response. The function either returned None or ended without a return statement.
+[2019-06-08 01:59:27,573] {/usr/lib/python3.7/site-packages/flask/app.py:1761} ERROR - Exception on / [GET]
+Traceback (most recent call last):
+  File "/usr/lib/python3.7/site-packages/flask/app.py", line 2292, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/usr/lib/python3.7/site-packages/flask/app.py", line 1816, in full_dispatch_request
+    return self.finalize_request(rv)
+  File "/usr/lib/python3.7/site-packages/flask/app.py", line 1831, in finalize_request
+    response = self.make_response(rv)
+  File "/usr/lib/python3.7/site-packages/flask/app.py", line 1957, in make_response
+    'The view function did not return a valid response. The'
+TypeError: The view function did not return a valid response. The function either returned None or ended without a return statement.
+[2019-06-08 02:01:12,850] {/usr/lib/python3.7/site-packages/flask/app.py:1761} ERROR - Exception on /client/createapp [POST]
+Traceback (most recent call last):
+  File "/usr/lib/python3.7/site-packages/sqlalchemy/engine/base.py", line 1244, in _execute_context
+    cursor, statement, parameters, context
+  File "/usr/lib/python3.7/site-packages/sqlalchemy/engine/default.py", line 550, in do_execute
+    cursor.execute(statement, parameters)
+sqlite3.IntegrityError: NOT NULL constraint failed: t_zakaz.c_id_state
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/usr/lib/python3.7/site-packages/flask/app.py", line 2292, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/usr/lib/python3.7/site-packages/flask/app.py", line 1815, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/usr/lib/python3.7/site-packages/flask/app.py", line 1718, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/usr/lib/python3.7/site-packages/flask/_compat.py", line 35, in reraise
+    raise value
+  File "/usr/lib/python3.7/site-packages/flask/app.py", line 1813, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/usr/lib/python3.7/site-packages/flask/app.py", line 1799, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "server.py", line 134, in ca
+    c_descr=descr))
+  File "/usr/lib/python3.7/site-packages/dataset/table.py", line 80, in insert
+    res = self.db.executable.execute(self.table.insert(row))
+  File "/usr/lib/python3.7/site-packages/sqlalchemy/engine/base.py", line 988, in execute
+    return meth(self, multiparams, params)
+  File "/usr/lib/python3.7/site-packages/sqlalchemy/sql/elements.py", line 287, in _execute_on_connection
+    return connection._execute_clauseelement(self, multiparams, params)
+  File "/usr/lib/python3.7/site-packages/sqlalchemy/engine/base.py", line 1107, in _execute_clauseelement
+    distilled_params,
+  File "/usr/lib/python3.7/site-packages/sqlalchemy/engine/base.py", line 1248, in _execute_context
+    e, statement, parameters, cursor, context
+  File "/usr/lib/python3.7/site-packages/sqlalchemy/engine/base.py", line 1466, in _handle_dbapi_exception
+    util.raise_from_cause(sqlalchemy_exception, exc_info)
+  File "/usr/lib/python3.7/site-packages/sqlalchemy/util/compat.py", line 383, in raise_from_cause
+    reraise(type(exception), exception, tb=exc_tb, cause=cause)
+  File "/usr/lib/python3.7/site-packages/sqlalchemy/util/compat.py", line 128, in reraise
+    raise value.with_traceback(tb)
+  File "/usr/lib/python3.7/site-packages/sqlalchemy/engine/base.py", line 1244, in _execute_context
+    cursor, statement, parameters, context
+  File "/usr/lib/python3.7/site-packages/sqlalchemy/engine/default.py", line 550, in do_execute
+    cursor.execute(statement, parameters)
+sqlalchemy.exc.IntegrityError: (sqlite3.IntegrityError) NOT NULL constraint failed: t_zakaz.c_id_state
+[SQL: INSERT INTO t_zakaz (c_uid, c_money, c_create_date, c_duration, c_caption, c_descr, "c_ROLE_id") VALUES (?, ?, ?, ?, ?, ?, ?)]
+[parameters: (2, '123', '08.06.2019, 02:01:12', '12', 'ggggg', 'fasdfasdfasdfadsfa', 1)]
+(Background on this error at: http://sqlalche.me/e/gkpj)
+[2019-06-08 02:02:24,690] {/usr/lib/python3.7/site-packages/flask/app.py:1761} ERROR - Exception on /client/createapp [POST]
+Traceback (most recent call last):
+  File "/usr/lib/python3.7/site-packages/sqlalchemy/engine/base.py", line 1244, in _execute_context
+    cursor, statement, parameters, context
+  File "/usr/lib/python3.7/site-packages/sqlalchemy/engine/default.py", line 550, in do_execute
+    cursor.execute(statement, parameters)
+sqlite3.IntegrityError: NOT NULL constraint failed: t_zakaz.c_id_state
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/usr/lib/python3.7/site-packages/flask/app.py", line 2292, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/usr/lib/python3.7/site-packages/flask/app.py", line 1815, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/usr/lib/python3.7/site-packages/flask/app.py", line 1718, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/usr/lib/python3.7/site-packages/flask/_compat.py", line 35, in reraise
+    raise value
+  File "/usr/lib/python3.7/site-packages/flask/app.py", line 1813, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/usr/lib/python3.7/site-packages/flask/app.py", line 1799, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "server.py", line 134, in ca
+    c_descr=descr))
+  File "/usr/lib/python3.7/site-packages/dataset/table.py", line 80, in insert
+    res = self.db.executable.execute(self.table.insert(row))
+  File "/usr/lib/python3.7/site-packages/sqlalchemy/engine/base.py", line 988, in execute
+    return meth(self, multiparams, params)
+  File "/usr/lib/python3.7/site-packages/sqlalchemy/sql/elements.py", line 287, in _execute_on_connection
+    return connection._execute_clauseelement(self, multiparams, params)
+  File "/usr/lib/python3.7/site-packages/sqlalchemy/engine/base.py", line 1107, in _execute_clauseelement
+    distilled_params,
+  File "/usr/lib/python3.7/site-packages/sqlalchemy/engine/base.py", line 1248, in _execute_context
+    e, statement, parameters, cursor, context
+  File "/usr/lib/python3.7/site-packages/sqlalchemy/engine/base.py", line 1466, in _handle_dbapi_exception
+    util.raise_from_cause(sqlalchemy_exception, exc_info)
+  File "/usr/lib/python3.7/site-packages/sqlalchemy/util/compat.py", line 383, in raise_from_cause
+    reraise(type(exception), exception, tb=exc_tb, cause=cause)
+  File "/usr/lib/python3.7/site-packages/sqlalchemy/util/compat.py", line 128, in reraise
+    raise value.with_traceback(tb)
+  File "/usr/lib/python3.7/site-packages/sqlalchemy/engine/base.py", line 1244, in _execute_context
+    cursor, statement, parameters, context
+  File "/usr/lib/python3.7/site-packages/sqlalchemy/engine/default.py", line 550, in do_execute
+    cursor.execute(statement, parameters)
+sqlalchemy.exc.IntegrityError: (sqlite3.IntegrityError) NOT NULL constraint failed: t_zakaz.c_id_state
+[SQL: INSERT INTO t_zakaz (c_uid, c_money, c_create_date, c_duration, c_caption, c_descr, "c_ROLE_id") VALUES (?, ?, ?, ?, ?, ?, ?)]
+[parameters: (2, '123', '08.06.2019, 02:02:24', '12', 'ggggg', 'fasdfasdfasdfadsfa', 1)]
+(Background on this error at: http://sqlalche.me/e/gkpj)
+[2019-06-08 02:13:49,609] {/usr/lib/python3.7/site-packages/flask/app.py:1761} ERROR - Exception on /logout [GET]
+Traceback (most recent call last):
+  File "/usr/lib/python3.7/site-packages/flask/app.py", line 2292, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/usr/lib/python3.7/site-packages/flask/app.py", line 1816, in full_dispatch_request
+    return self.finalize_request(rv)
+  File "/usr/lib/python3.7/site-packages/flask/app.py", line 1831, in finalize_request
+    response = self.make_response(rv)
+  File "/usr/lib/python3.7/site-packages/flask/app.py", line 1957, in make_response
+    'The view function did not return a valid response. The'
+TypeError: The view function did not return a valid response. The function either returned None or ended without a return statement.
+[2019-06-08 02:46:00,379] {/usr/lib/python3.7/site-packages/flask/app.py:1761} ERROR - Exception on /client/listapp [GET]
+Traceback (most recent call last):
+  File "/usr/lib/python3.7/site-packages/flask/app.py", line 2292, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/usr/lib/python3.7/site-packages/flask/app.py", line 1815, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/usr/lib/python3.7/site-packages/flask/app.py", line 1718, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/usr/lib/python3.7/site-packages/flask/_compat.py", line 35, in reraise
+    raise value
+  File "/usr/lib/python3.7/site-packages/flask/app.py", line 1813, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/usr/lib/python3.7/site-packages/flask/app.py", line 1799, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "server.py", line 169, in client_listapp
+    udat.append(dict(fio=u['fio'],uid=u['c_id']))
+TypeError: 'ResultIter' object is not subscriptable
+[2019-06-08 02:46:30,500] {/usr/lib/python3.7/site-packages/flask/app.py:1761} ERROR - Exception on /client/listapp [GET]
+Traceback (most recent call last):
+  File "/usr/lib/python3.7/site-packages/flask/app.py", line 2292, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/usr/lib/python3.7/site-packages/flask/app.py", line 1815, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/usr/lib/python3.7/site-packages/flask/app.py", line 1718, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/usr/lib/python3.7/site-packages/flask/_compat.py", line 35, in reraise
+    raise value
+  File "/usr/lib/python3.7/site-packages/flask/app.py", line 1813, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/usr/lib/python3.7/site-packages/flask/app.py", line 1799, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "server.py", line 169, in client_listapp
+    udat.append(dict(fio=u['fio'],uid=u['c_id']))
+TypeError: 'ResultIter' object is not subscriptable
+[2019-06-08 02:46:43,055] {/usr/lib/python3.7/site-packages/flask/app.py:1761} ERROR - Exception on /client/listapp [GET]
+Traceback (most recent call last):
+  File "/usr/lib/python3.7/site-packages/flask/app.py", line 2292, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/usr/lib/python3.7/site-packages/flask/app.py", line 1815, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/usr/lib/python3.7/site-packages/flask/app.py", line 1718, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/usr/lib/python3.7/site-packages/flask/_compat.py", line 35, in reraise
+    raise value
+  File "/usr/lib/python3.7/site-packages/flask/app.py", line 1813, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/usr/lib/python3.7/site-packages/flask/app.py", line 1799, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "server.py", line 169, in client_listapp
+    udat.append(dict(fio=u['fio'],uid=u['c_id']))
+TypeError: 'ResultIter' object is not subscriptable
+[2019-06-08 02:47:25,003] {/usr/lib/python3.7/site-packages/flask/app.py:1761} ERROR - Exception on /client/listapp [GET]
+Traceback (most recent call last):
+  File "/usr/lib/python3.7/site-packages/flask/app.py", line 2292, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/usr/lib/python3.7/site-packages/flask/app.py", line 1815, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/usr/lib/python3.7/site-packages/flask/app.py", line 1718, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/usr/lib/python3.7/site-packages/flask/_compat.py", line 35, in reraise
+    raise value
+  File "/usr/lib/python3.7/site-packages/flask/app.py", line 1813, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/usr/lib/python3.7/site-packages/flask/app.py", line 1799, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "server.py", line 169, in client_listapp
+    udat.append(dict(fio=u['fio'],uid=u['c_id']))
+KeyError: 'fio'
+[2019-06-08 02:47:25,362] {/usr/lib/python3.7/site-packages/flask/app.py:1761} ERROR - Exception on /client/listapp [GET]
+Traceback (most recent call last):
+  File "/usr/lib/python3.7/site-packages/flask/app.py", line 2292, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/usr/lib/python3.7/site-packages/flask/app.py", line 1815, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/usr/lib/python3.7/site-packages/flask/app.py", line 1718, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/usr/lib/python3.7/site-packages/flask/_compat.py", line 35, in reraise
+    raise value
+  File "/usr/lib/python3.7/site-packages/flask/app.py", line 1813, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/usr/lib/python3.7/site-packages/flask/app.py", line 1799, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "server.py", line 169, in client_listapp
+    udat.append(dict(fio=u['fio'],uid=u['c_id']))
+KeyError: 'fio'
+[2019-06-13 03:44:50,191] {server.py:49} INFO - Created t_users table
+[2019-06-13 03:44:50,370] {server.py:62} INFO - Created t_zakaz table
+[2019-06-13 03:44:50,493] {server.py:72} INFO - Created t_zayavka table
+[2019-06-13 03:46:28,423] {/usr/lib/python3.7/site-packages/flask/app.py:1761} ERROR - Exception on /copyriter/trytake/1 [GET]
+Traceback (most recent call last):
+  File "/usr/lib/python3.7/site-packages/sqlalchemy/engine/base.py", line 1244, in _execute_context
+    cursor, statement, parameters, context
+  File "/usr/lib/python3.7/site-packages/sqlalchemy/engine/default.py", line 550, in do_execute
+    cursor.execute(statement, parameters)
+sqlite3.IntegrityError: NOT NULL constraint failed: t_zayavka.c_id_state
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/usr/lib/python3.7/site-packages/flask/app.py", line 2292, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/usr/lib/python3.7/site-packages/flask/app.py", line 1815, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/usr/lib/python3.7/site-packages/flask/app.py", line 1718, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/usr/lib/python3.7/site-packages/flask/_compat.py", line 35, in reraise
+    raise value
+  File "/usr/lib/python3.7/site-packages/flask/app.py", line 1813, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/usr/lib/python3.7/site-packages/flask/app.py", line 1799, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "server.py", line 186, in trytake
+    db['t_zayavka'].insert(dict(c_id_copyriter=session['user_id'],c_id_zakaz=zid))
+  File "/usr/lib/python3.7/site-packages/dataset/table.py", line 80, in insert
+    res = self.db.executable.execute(self.table.insert(row))
+  File "/usr/lib/python3.7/site-packages/sqlalchemy/engine/base.py", line 988, in execute
+    return meth(self, multiparams, params)
+  File "/usr/lib/python3.7/site-packages/sqlalchemy/sql/elements.py", line 287, in _execute_on_connection
+    return connection._execute_clauseelement(self, multiparams, params)
+  File "/usr/lib/python3.7/site-packages/sqlalchemy/engine/base.py", line 1107, in _execute_clauseelement
+    distilled_params,
+  File "/usr/lib/python3.7/site-packages/sqlalchemy/engine/base.py", line 1248, in _execute_context
+    e, statement, parameters, cursor, context
+  File "/usr/lib/python3.7/site-packages/sqlalchemy/engine/base.py", line 1466, in _handle_dbapi_exception
+    util.raise_from_cause(sqlalchemy_exception, exc_info)
+  File "/usr/lib/python3.7/site-packages/sqlalchemy/util/compat.py", line 383, in raise_from_cause
+    reraise(type(exception), exception, tb=exc_tb, cause=cause)
+  File "/usr/lib/python3.7/site-packages/sqlalchemy/util/compat.py", line 128, in reraise
+    raise value.with_traceback(tb)
+  File "/usr/lib/python3.7/site-packages/sqlalchemy/engine/base.py", line 1244, in _execute_context
+    cursor, statement, parameters, context
+  File "/usr/lib/python3.7/site-packages/sqlalchemy/engine/default.py", line 550, in do_execute
+    cursor.execute(statement, parameters)
+sqlalchemy.exc.IntegrityError: (sqlite3.IntegrityError) NOT NULL constraint failed: t_zayavka.c_id_state
+[SQL: INSERT INTO t_zayavka (c_id_copyriter, c_id_zakaz) VALUES (?, ?)]
+[parameters: (2, '1')]
+(Background on this error at: http://sqlalche.me/e/gkpj)
+[2019-06-13 04:24:25,154] {/usr/lib/python3.7/site-packages/flask/app.py:1761} ERROR - Exception on /client/confirm/1 [GET]
+Traceback (most recent call last):
+  File "/usr/lib/python3.7/site-packages/flask/app.py", line 2292, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/usr/lib/python3.7/site-packages/flask/app.py", line 1816, in full_dispatch_request
+    return self.finalize_request(rv)
+  File "/usr/lib/python3.7/site-packages/flask/app.py", line 1831, in finalize_request
+    response = self.make_response(rv)
+  File "/usr/lib/python3.7/site-packages/flask/app.py", line 1957, in make_response
+    'The view function did not return a valid response. The'
+TypeError: The view function did not return a valid response. The function either returned None or ended without a return statement.
+[2019-06-13 04:26:18,652] {/usr/lib/python3.7/site-packages/flask/app.py:1761} ERROR - Exception on /client/confirm/1 [GET]
+Traceback (most recent call last):
+  File "/usr/lib/python3.7/site-packages/flask/app.py", line 2292, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/usr/lib/python3.7/site-packages/flask/app.py", line 1816, in full_dispatch_request
+    return self.finalize_request(rv)
+  File "/usr/lib/python3.7/site-packages/flask/app.py", line 1831, in finalize_request
+    response = self.make_response(rv)
+  File "/usr/lib/python3.7/site-packages/flask/app.py", line 1957, in make_response
+    'The view function did not return a valid response. The'
+TypeError: The view function did not return a valid response. The function either returned None or ended without a return statement.
+[2019-06-16 17:46:56,701] {/usr/lib/python3.7/site-packages/flask/app.py:1761} ERROR - Exception on /copyriter/passpage/1 [GET]
+Traceback (most recent call last):
+  File "/usr/lib/python3.7/site-packages/flask/app.py", line 2292, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/usr/lib/python3.7/site-packages/flask/app.py", line 1815, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/usr/lib/python3.7/site-packages/flask/app.py", line 1718, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/usr/lib/python3.7/site-packages/flask/_compat.py", line 35, in reraise
+    raise value
+  File "/usr/lib/python3.7/site-packages/flask/app.py", line 1813, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/usr/lib/python3.7/site-packages/flask/app.py", line 1799, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "server.py", line 301, in copyriter_pass
+    'taken_at' :zayawka['c_create_date']}
+TypeError: list indices must be integers or slices, not str
+[2019-06-16 18:24:32,058] {/usr/lib/python3.7/site-packages/flask/app.py:1761} ERROR - Exception on /copyriter/pass [POST]
+Traceback (most recent call last):
+  File "/usr/lib/python3.7/site-packages/flask/app.py", line 2292, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/usr/lib/python3.7/site-packages/flask/app.py", line 1815, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/usr/lib/python3.7/site-packages/flask/app.py", line 1718, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/usr/lib/python3.7/site-packages/flask/_compat.py", line 35, in reraise
+    raise value
+  File "/usr/lib/python3.7/site-packages/flask/app.py", line 1813, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/usr/lib/python3.7/site-packages/flask/app.py", line 1799, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "server.py", line 320, in copyriter_pass
+    fname=+"_"+tm+".pdf"
+TypeError: bad operand type for unary +: 'str'
+[2019-06-16 18:25:33,907] {/usr/lib/python3.7/site-packages/flask/app.py:1761} ERROR - Exception on /copyriter/pass [POST]
+Traceback (most recent call last):
+  File "/usr/lib/python3.7/site-packages/flask/app.py", line 2292, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/usr/lib/python3.7/site-packages/flask/app.py", line 1816, in full_dispatch_request
+    return self.finalize_request(rv)
+  File "/usr/lib/python3.7/site-packages/flask/app.py", line 1831, in finalize_request
+    response = self.make_response(rv)
+  File "/usr/lib/python3.7/site-packages/flask/app.py", line 1957, in make_response
+    'The view function did not return a valid response. The'
+TypeError: The view function did not return a valid response. The function either returned None or ended without a return statement.
+[2019-06-16 18:45:39,804] {/usr/lib/python3.7/site-packages/flask/app.py:1761} ERROR - Exception on /copyriter/passpage/1 [GET]
+Traceback (most recent call last):
+  File "/usr/lib/python3.7/site-packages/flask/app.py", line 2292, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/usr/lib/python3.7/site-packages/flask/app.py", line 1815, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/usr/lib/python3.7/site-packages/flask/app.py", line 1718, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/usr/lib/python3.7/site-packages/flask/_compat.py", line 35, in reraise
+    raise value
+  File "/usr/lib/python3.7/site-packages/flask/app.py", line 1813, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/usr/lib/python3.7/site-packages/flask/app.py", line 1799, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "server.py", line 334, in copyriter_passpage
+    random_number = random.randint(1, 1000)
+NameError: name 'random' is not defined
+[2019-06-17 15:55:46,667] {/usr/lib/python3.7/site-packages/flask/app.py:1761} ERROR - Exception on /client/view/4 [GET]
+Traceback (most recent call last):
+  File "/usr/lib/python3.7/site-packages/flask/app.py", line 2292, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/usr/lib/python3.7/site-packages/flask/app.py", line 1815, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/usr/lib/python3.7/site-packages/flask/app.py", line 1718, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/usr/lib/python3.7/site-packages/flask/_compat.py", line 35, in reraise
+    raise value
+  File "/usr/lib/python3.7/site-packages/flask/app.py", line 1813, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/usr/lib/python3.7/site-packages/flask/app.py", line 1799, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "server.py", line 233, in client_view
+    zayawka = db['t_zayavka'].find_one(c_id_zakaz=zid)
+NameError: name 'zid' is not defined
+[2019-06-17 15:56:42,713] {/usr/lib/python3.7/site-packages/flask/app.py:1761} ERROR - Exception on /client/view/4 [GET]
+Traceback (most recent call last):
+  File "/usr/lib/python3.7/site-packages/flask/app.py", line 2292, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/usr/lib/python3.7/site-packages/flask/app.py", line 1815, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/usr/lib/python3.7/site-packages/flask/app.py", line 1718, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/usr/lib/python3.7/site-packages/flask/_compat.py", line 35, in reraise
+    raise value
+  File "/usr/lib/python3.7/site-packages/flask/app.py", line 1813, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/usr/lib/python3.7/site-packages/flask/app.py", line 1799, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "server.py", line 234, in client_view
+    if not zayavka:
+NameError: name 'zayavka' is not defined
+[2019-06-17 15:56:43,910] {/usr/lib/python3.7/site-packages/flask/app.py:1761} ERROR - Exception on /client/view/4 [GET]
+Traceback (most recent call last):
+  File "/usr/lib/python3.7/site-packages/flask/app.py", line 2292, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/usr/lib/python3.7/site-packages/flask/app.py", line 1815, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/usr/lib/python3.7/site-packages/flask/app.py", line 1718, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/usr/lib/python3.7/site-packages/flask/_compat.py", line 35, in reraise
+    raise value
+  File "/usr/lib/python3.7/site-packages/flask/app.py", line 1813, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/usr/lib/python3.7/site-packages/flask/app.py", line 1799, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "server.py", line 234, in client_view
+    if not zayavka:
+NameError: name 'zayavka' is not defined
+[2019-06-17 16:28:24,362] {server.py:53} INFO - Created t_users table
+[2019-06-17 16:28:24,485] {server.py:66} INFO - Created t_zakaz table
+[2019-06-17 16:28:24,609] {server.py:78} INFO - Created t_zayavka table
+[2019-06-17 16:31:01,947] {/usr/lib/python3.7/site-packages/flask/app.py:1761} ERROR - Exception on /copyriter/trytake/1 [GET]
+Traceback (most recent call last):
+  File "/usr/lib/python3.7/site-packages/sqlalchemy/engine/base.py", line 1244, in _execute_context
+    cursor, statement, parameters, context
+  File "/usr/lib/python3.7/site-packages/sqlalchemy/engine/default.py", line 550, in do_execute
+    cursor.execute(statement, parameters)
+sqlite3.IntegrityError: NOT NULL constraint failed: t_zayavka.c_file_passed
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/usr/lib/python3.7/site-packages/flask/app.py", line 2292, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/usr/lib/python3.7/site-packages/flask/app.py", line 1815, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/usr/lib/python3.7/site-packages/flask/app.py", line 1718, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/usr/lib/python3.7/site-packages/flask/_compat.py", line 35, in reraise
+    raise value
+  File "/usr/lib/python3.7/site-packages/flask/app.py", line 1813, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/usr/lib/python3.7/site-packages/flask/app.py", line 1799, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "server.py", line 195, in trytake
+    c_id_state=ZAYAVKA_PLACED,c_create_date=tm,c_comments=""))
+  File "/usr/lib/python3.7/site-packages/dataset/table.py", line 80, in insert
+    res = self.db.executable.execute(self.table.insert(row))
+  File "/usr/lib/python3.7/site-packages/sqlalchemy/engine/base.py", line 988, in execute
+    return meth(self, multiparams, params)
+  File "/usr/lib/python3.7/site-packages/sqlalchemy/sql/elements.py", line 287, in _execute_on_connection
+    return connection._execute_clauseelement(self, multiparams, params)
+  File "/usr/lib/python3.7/site-packages/sqlalchemy/engine/base.py", line 1107, in _execute_clauseelement
+    distilled_params,
+  File "/usr/lib/python3.7/site-packages/sqlalchemy/engine/base.py", line 1248, in _execute_context
+    e, statement, parameters, cursor, context
+  File "/usr/lib/python3.7/site-packages/sqlalchemy/engine/base.py", line 1466, in _handle_dbapi_exception
+    util.raise_from_cause(sqlalchemy_exception, exc_info)
+  File "/usr/lib/python3.7/site-packages/sqlalchemy/util/compat.py", line 383, in raise_from_cause
+    reraise(type(exception), exception, tb=exc_tb, cause=cause)
+  File "/usr/lib/python3.7/site-packages/sqlalchemy/util/compat.py", line 128, in reraise
+    raise value.with_traceback(tb)
+  File "/usr/lib/python3.7/site-packages/sqlalchemy/engine/base.py", line 1244, in _execute_context
+    cursor, statement, parameters, context
+  File "/usr/lib/python3.7/site-packages/sqlalchemy/engine/default.py", line 550, in do_execute
+    cursor.execute(statement, parameters)
+sqlalchemy.exc.IntegrityError: (sqlite3.IntegrityError) NOT NULL constraint failed: t_zayavka.c_file_passed
+[SQL: INSERT INTO t_zayavka (c_id_copyriter, c_id_zakaz, c_id_state, c_create_date, c_comments) VALUES (?, ?, ?, ?, ?)]
+[parameters: (2, '1', 1, '17.06.2019, 16:31:01', '')]
+(Background on this error at: http://sqlalche.me/e/gkpj)
+[2019-06-17 16:31:03,379] {/usr/lib/python3.7/site-packages/flask/app.py:1761} ERROR - Exception on /copyriter/trytake/1 [GET]
+Traceback (most recent call last):
+  File "/usr/lib/python3.7/site-packages/sqlalchemy/engine/base.py", line 1244, in _execute_context
+    cursor, statement, parameters, context
+  File "/usr/lib/python3.7/site-packages/sqlalchemy/engine/default.py", line 550, in do_execute
+    cursor.execute(statement, parameters)
+sqlite3.IntegrityError: NOT NULL constraint failed: t_zayavka.c_file_passed
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/usr/lib/python3.7/site-packages/flask/app.py", line 2292, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/usr/lib/python3.7/site-packages/flask/app.py", line 1815, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/usr/lib/python3.7/site-packages/flask/app.py", line 1718, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/usr/lib/python3.7/site-packages/flask/_compat.py", line 35, in reraise
+    raise value
+  File "/usr/lib/python3.7/site-packages/flask/app.py", line 1813, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/usr/lib/python3.7/site-packages/flask/app.py", line 1799, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "server.py", line 195, in trytake
+    c_id_state=ZAYAVKA_PLACED,c_create_date=tm,c_comments=""))
+  File "/usr/lib/python3.7/site-packages/dataset/table.py", line 80, in insert
+    res = self.db.executable.execute(self.table.insert(row))
+  File "/usr/lib/python3.7/site-packages/sqlalchemy/engine/base.py", line 988, in execute
+    return meth(self, multiparams, params)
+  File "/usr/lib/python3.7/site-packages/sqlalchemy/sql/elements.py", line 287, in _execute_on_connection
+    return connection._execute_clauseelement(self, multiparams, params)
+  File "/usr/lib/python3.7/site-packages/sqlalchemy/engine/base.py", line 1107, in _execute_clauseelement
+    distilled_params,
+  File "/usr/lib/python3.7/site-packages/sqlalchemy/engine/base.py", line 1248, in _execute_context
+    e, statement, parameters, cursor, context
+  File "/usr/lib/python3.7/site-packages/sqlalchemy/engine/base.py", line 1466, in _handle_dbapi_exception
+    util.raise_from_cause(sqlalchemy_exception, exc_info)
+  File "/usr/lib/python3.7/site-packages/sqlalchemy/util/compat.py", line 383, in raise_from_cause
+    reraise(type(exception), exception, tb=exc_tb, cause=cause)
+  File "/usr/lib/python3.7/site-packages/sqlalchemy/util/compat.py", line 128, in reraise
+    raise value.with_traceback(tb)
+  File "/usr/lib/python3.7/site-packages/sqlalchemy/engine/base.py", line 1244, in _execute_context
+    cursor, statement, parameters, context
+  File "/usr/lib/python3.7/site-packages/sqlalchemy/engine/default.py", line 550, in do_execute
+    cursor.execute(statement, parameters)
+sqlalchemy.exc.IntegrityError: (sqlite3.IntegrityError) NOT NULL constraint failed: t_zayavka.c_file_passed
+[SQL: INSERT INTO t_zayavka (c_id_copyriter, c_id_zakaz, c_id_state, c_create_date, c_comments) VALUES (?, ?, ?, ?, ?)]
+[parameters: (2, '1', 1, '17.06.2019, 16:31:03', '')]
+(Background on this error at: http://sqlalche.me/e/gkpj)
+[2019-06-17 16:31:03,838] {/usr/lib/python3.7/site-packages/flask/app.py:1761} ERROR - Exception on /copyriter/trytake/1 [GET]
+Traceback (most recent call last):
+  File "/usr/lib/python3.7/site-packages/sqlalchemy/engine/base.py", line 1244, in _execute_context
+    cursor, statement, parameters, context
+  File "/usr/lib/python3.7/site-packages/sqlalchemy/engine/default.py", line 550, in do_execute
+    cursor.execute(statement, parameters)
+sqlite3.IntegrityError: NOT NULL constraint failed: t_zayavka.c_file_passed
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/usr/lib/python3.7/site-packages/flask/app.py", line 2292, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/usr/lib/python3.7/site-packages/flask/app.py", line 1815, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/usr/lib/python3.7/site-packages/flask/app.py", line 1718, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/usr/lib/python3.7/site-packages/flask/_compat.py", line 35, in reraise
+    raise value
+  File "/usr/lib/python3.7/site-packages/flask/app.py", line 1813, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/usr/lib/python3.7/site-packages/flask/app.py", line 1799, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "server.py", line 195, in trytake
+    c_id_state=ZAYAVKA_PLACED,c_create_date=tm,c_comments=""))
+  File "/usr/lib/python3.7/site-packages/dataset/table.py", line 80, in insert
+    res = self.db.executable.execute(self.table.insert(row))
+  File "/usr/lib/python3.7/site-packages/sqlalchemy/engine/base.py", line 988, in execute
+    return meth(self, multiparams, params)
+  File "/usr/lib/python3.7/site-packages/sqlalchemy/sql/elements.py", line 287, in _execute_on_connection
+    return connection._execute_clauseelement(self, multiparams, params)
+  File "/usr/lib/python3.7/site-packages/sqlalchemy/engine/base.py", line 1107, in _execute_clauseelement
+    distilled_params,
+  File "/usr/lib/python3.7/site-packages/sqlalchemy/engine/base.py", line 1248, in _execute_context
+    e, statement, parameters, cursor, context
+  File "/usr/lib/python3.7/site-packages/sqlalchemy/engine/base.py", line 1466, in _handle_dbapi_exception
+    util.raise_from_cause(sqlalchemy_exception, exc_info)
+  File "/usr/lib/python3.7/site-packages/sqlalchemy/util/compat.py", line 383, in raise_from_cause
+    reraise(type(exception), exception, tb=exc_tb, cause=cause)
+  File "/usr/lib/python3.7/site-packages/sqlalchemy/util/compat.py", line 128, in reraise
+    raise value.with_traceback(tb)
+  File "/usr/lib/python3.7/site-packages/sqlalchemy/engine/base.py", line 1244, in _execute_context
+    cursor, statement, parameters, context
+  File "/usr/lib/python3.7/site-packages/sqlalchemy/engine/default.py", line 550, in do_execute
+    cursor.execute(statement, parameters)
+sqlalchemy.exc.IntegrityError: (sqlite3.IntegrityError) NOT NULL constraint failed: t_zayavka.c_file_passed
+[SQL: INSERT INTO t_zayavka (c_id_copyriter, c_id_zakaz, c_id_state, c_create_date, c_comments) VALUES (?, ?, ?, ?, ?)]
+[parameters: (2, '1', 1, '17.06.2019, 16:31:03', '')]
+(Background on this error at: http://sqlalche.me/e/gkpj)
+[2019-06-17 16:31:04,027] {/usr/lib/python3.7/site-packages/flask/app.py:1761} ERROR - Exception on /copyriter/trytake/1 [GET]
+Traceback (most recent call last):
+  File "/usr/lib/python3.7/site-packages/sqlalchemy/engine/base.py", line 1244, in _execute_context
+    cursor, statement, parameters, context
+  File "/usr/lib/python3.7/site-packages/sqlalchemy/engine/default.py", line 550, in do_execute
+    cursor.execute(statement, parameters)
+sqlite3.IntegrityError: NOT NULL constraint failed: t_zayavka.c_file_passed
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/usr/lib/python3.7/site-packages/flask/app.py", line 2292, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/usr/lib/python3.7/site-packages/flask/app.py", line 1815, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/usr/lib/python3.7/site-packages/flask/app.py", line 1718, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/usr/lib/python3.7/site-packages/flask/_compat.py", line 35, in reraise
+    raise value
+  File "/usr/lib/python3.7/site-packages/flask/app.py", line 1813, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/usr/lib/python3.7/site-packages/flask/app.py", line 1799, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "server.py", line 195, in trytake
+    c_id_state=ZAYAVKA_PLACED,c_create_date=tm,c_comments=""))
+  File "/usr/lib/python3.7/site-packages/dataset/table.py", line 80, in insert
+    res = self.db.executable.execute(self.table.insert(row))
+  File "/usr/lib/python3.7/site-packages/sqlalchemy/engine/base.py", line 988, in execute
+    return meth(self, multiparams, params)
+  File "/usr/lib/python3.7/site-packages/sqlalchemy/sql/elements.py", line 287, in _execute_on_connection
+    return connection._execute_clauseelement(self, multiparams, params)
+  File "/usr/lib/python3.7/site-packages/sqlalchemy/engine/base.py", line 1107, in _execute_clauseelement
+    distilled_params,
+  File "/usr/lib/python3.7/site-packages/sqlalchemy/engine/base.py", line 1248, in _execute_context
+    e, statement, parameters, cursor, context
+  File "/usr/lib/python3.7/site-packages/sqlalchemy/engine/base.py", line 1466, in _handle_dbapi_exception
+    util.raise_from_cause(sqlalchemy_exception, exc_info)
+  File "/usr/lib/python3.7/site-packages/sqlalchemy/util/compat.py", line 383, in raise_from_cause
+    reraise(type(exception), exception, tb=exc_tb, cause=cause)
+  File "/usr/lib/python3.7/site-packages/sqlalchemy/util/compat.py", line 128, in reraise
+    raise value.with_traceback(tb)
+  File "/usr/lib/python3.7/site-packages/sqlalchemy/engine/base.py", line 1244, in _execute_context
+    cursor, statement, parameters, context
+  File "/usr/lib/python3.7/site-packages/sqlalchemy/engine/default.py", line 550, in do_execute
+    cursor.execute(statement, parameters)
+sqlalchemy.exc.IntegrityError: (sqlite3.IntegrityError) NOT NULL constraint failed: t_zayavka.c_file_passed
+[SQL: INSERT INTO t_zayavka (c_id_copyriter, c_id_zakaz, c_id_state, c_create_date, c_comments) VALUES (?, ?, ?, ?, ?)]
+[parameters: (2, '1', 1, '17.06.2019, 16:31:04', '')]
+(Background on this error at: http://sqlalche.me/e/gkpj)
+[2019-06-17 16:31:04,210] {/usr/lib/python3.7/site-packages/flask/app.py:1761} ERROR - Exception on /copyriter/trytake/1 [GET]
+Traceback (most recent call last):
+  File "/usr/lib/python3.7/site-packages/sqlalchemy/engine/base.py", line 1244, in _execute_context
+    cursor, statement, parameters, context
+  File "/usr/lib/python3.7/site-packages/sqlalchemy/engine/default.py", line 550, in do_execute
+    cursor.execute(statement, parameters)
+sqlite3.IntegrityError: NOT NULL constraint failed: t_zayavka.c_file_passed
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/usr/lib/python3.7/site-packages/flask/app.py", line 2292, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/usr/lib/python3.7/site-packages/flask/app.py", line 1815, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/usr/lib/python3.7/site-packages/flask/app.py", line 1718, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/usr/lib/python3.7/site-packages/flask/_compat.py", line 35, in reraise
+    raise value
+  File "/usr/lib/python3.7/site-packages/flask/app.py", line 1813, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/usr/lib/python3.7/site-packages/flask/app.py", line 1799, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "server.py", line 195, in trytake
+    c_id_state=ZAYAVKA_PLACED,c_create_date=tm,c_comments=""))
+  File "/usr/lib/python3.7/site-packages/dataset/table.py", line 80, in insert
+    res = self.db.executable.execute(self.table.insert(row))
+  File "/usr/lib/python3.7/site-packages/sqlalchemy/engine/base.py", line 988, in execute
+    return meth(self, multiparams, params)
+  File "/usr/lib/python3.7/site-packages/sqlalchemy/sql/elements.py", line 287, in _execute_on_connection
+    return connection._execute_clauseelement(self, multiparams, params)
+  File "/usr/lib/python3.7/site-packages/sqlalchemy/engine/base.py", line 1107, in _execute_clauseelement
+    distilled_params,
+  File "/usr/lib/python3.7/site-packages/sqlalchemy/engine/base.py", line 1248, in _execute_context
+    e, statement, parameters, cursor, context
+  File "/usr/lib/python3.7/site-packages/sqlalchemy/engine/base.py", line 1466, in _handle_dbapi_exception
+    util.raise_from_cause(sqlalchemy_exception, exc_info)
+  File "/usr/lib/python3.7/site-packages/sqlalchemy/util/compat.py", line 383, in raise_from_cause
+    reraise(type(exception), exception, tb=exc_tb, cause=cause)
+  File "/usr/lib/python3.7/site-packages/sqlalchemy/util/compat.py", line 128, in reraise
+    raise value.with_traceback(tb)
+  File "/usr/lib/python3.7/site-packages/sqlalchemy/engine/base.py", line 1244, in _execute_context
+    cursor, statement, parameters, context
+  File "/usr/lib/python3.7/site-packages/sqlalchemy/engine/default.py", line 550, in do_execute
+    cursor.execute(statement, parameters)
+sqlalchemy.exc.IntegrityError: (sqlite3.IntegrityError) NOT NULL constraint failed: t_zayavka.c_file_passed
+[SQL: INSERT INTO t_zayavka (c_id_copyriter, c_id_zakaz, c_id_state, c_create_date, c_comments) VALUES (?, ?, ?, ?, ?)]
+[parameters: (2, '1', 1, '17.06.2019, 16:31:04', '')]
+(Background on this error at: http://sqlalche.me/e/gkpj)
+[2019-06-17 16:31:04,535] {/usr/lib/python3.7/site-packages/flask/app.py:1761} ERROR - Exception on /copyriter/trytake/1 [GET]
+Traceback (most recent call last):
+  File "/usr/lib/python3.7/site-packages/sqlalchemy/engine/base.py", line 1244, in _execute_context
+    cursor, statement, parameters, context
+  File "/usr/lib/python3.7/site-packages/sqlalchemy/engine/default.py", line 550, in do_execute
+    cursor.execute(statement, parameters)
+sqlite3.IntegrityError: NOT NULL constraint failed: t_zayavka.c_file_passed
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/usr/lib/python3.7/site-packages/flask/app.py", line 2292, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/usr/lib/python3.7/site-packages/flask/app.py", line 1815, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/usr/lib/python3.7/site-packages/flask/app.py", line 1718, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/usr/lib/python3.7/site-packages/flask/_compat.py", line 35, in reraise
+    raise value
+  File "/usr/lib/python3.7/site-packages/flask/app.py", line 1813, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/usr/lib/python3.7/site-packages/flask/app.py", line 1799, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "server.py", line 195, in trytake
+    c_id_state=ZAYAVKA_PLACED,c_create_date=tm,c_comments=""))
+  File "/usr/lib/python3.7/site-packages/dataset/table.py", line 80, in insert
+    res = self.db.executable.execute(self.table.insert(row))
+  File "/usr/lib/python3.7/site-packages/sqlalchemy/engine/base.py", line 988, in execute
+    return meth(self, multiparams, params)
+  File "/usr/lib/python3.7/site-packages/sqlalchemy/sql/elements.py", line 287, in _execute_on_connection
+    return connection._execute_clauseelement(self, multiparams, params)
+  File "/usr/lib/python3.7/site-packages/sqlalchemy/engine/base.py", line 1107, in _execute_clauseelement
+    distilled_params,
+  File "/usr/lib/python3.7/site-packages/sqlalchemy/engine/base.py", line 1248, in _execute_context
+    e, statement, parameters, cursor, context
+  File "/usr/lib/python3.7/site-packages/sqlalchemy/engine/base.py", line 1466, in _handle_dbapi_exception
+    util.raise_from_cause(sqlalchemy_exception, exc_info)
+  File "/usr/lib/python3.7/site-packages/sqlalchemy/util/compat.py", line 383, in raise_from_cause
+    reraise(type(exception), exception, tb=exc_tb, cause=cause)
+  File "/usr/lib/python3.7/site-packages/sqlalchemy/util/compat.py", line 128, in reraise
+    raise value.with_traceback(tb)
+  File "/usr/lib/python3.7/site-packages/sqlalchemy/engine/base.py", line 1244, in _execute_context
+    cursor, statement, parameters, context
+  File "/usr/lib/python3.7/site-packages/sqlalchemy/engine/default.py", line 550, in do_execute
+    cursor.execute(statement, parameters)
+sqlalchemy.exc.IntegrityError: (sqlite3.IntegrityError) NOT NULL constraint failed: t_zayavka.c_file_passed
+[SQL: INSERT INTO t_zayavka (c_id_copyriter, c_id_zakaz, c_id_state, c_create_date, c_comments) VALUES (?, ?, ?, ?, ?)]
+[parameters: (2, '1', 1, '17.06.2019, 16:31:04', '')]
+(Background on this error at: http://sqlalche.me/e/gkpj)
+[2019-06-17 16:31:09,943] {/usr/lib/python3.7/site-packages/flask/app.py:1761} ERROR - Exception on /copyriter/trytake/1 [GET]
+Traceback (most recent call last):
+  File "/usr/lib/python3.7/site-packages/sqlalchemy/engine/base.py", line 1244, in _execute_context
+    cursor, statement, parameters, context
+  File "/usr/lib/python3.7/site-packages/sqlalchemy/engine/default.py", line 550, in do_execute
+    cursor.execute(statement, parameters)
+sqlite3.IntegrityError: NOT NULL constraint failed: t_zayavka.c_file_passed
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/usr/lib/python3.7/site-packages/flask/app.py", line 2292, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/usr/lib/python3.7/site-packages/flask/app.py", line 1815, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/usr/lib/python3.7/site-packages/flask/app.py", line 1718, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/usr/lib/python3.7/site-packages/flask/_compat.py", line 35, in reraise
+    raise value
+  File "/usr/lib/python3.7/site-packages/flask/app.py", line 1813, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/usr/lib/python3.7/site-packages/flask/app.py", line 1799, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "server.py", line 195, in trytake
+    c_id_state=ZAYAVKA_PLACED,c_create_date=tm,c_comments=""))
+  File "/usr/lib/python3.7/site-packages/dataset/table.py", line 80, in insert
+    res = self.db.executable.execute(self.table.insert(row))
+  File "/usr/lib/python3.7/site-packages/sqlalchemy/engine/base.py", line 988, in execute
+    return meth(self, multiparams, params)
+  File "/usr/lib/python3.7/site-packages/sqlalchemy/sql/elements.py", line 287, in _execute_on_connection
+    return connection._execute_clauseelement(self, multiparams, params)
+  File "/usr/lib/python3.7/site-packages/sqlalchemy/engine/base.py", line 1107, in _execute_clauseelement
+    distilled_params,
+  File "/usr/lib/python3.7/site-packages/sqlalchemy/engine/base.py", line 1248, in _execute_context
+    e, statement, parameters, cursor, context
+  File "/usr/lib/python3.7/site-packages/sqlalchemy/engine/base.py", line 1466, in _handle_dbapi_exception
+    util.raise_from_cause(sqlalchemy_exception, exc_info)
+  File "/usr/lib/python3.7/site-packages/sqlalchemy/util/compat.py", line 383, in raise_from_cause
+    reraise(type(exception), exception, tb=exc_tb, cause=cause)
+  File "/usr/lib/python3.7/site-packages/sqlalchemy/util/compat.py", line 128, in reraise
+    raise value.with_traceback(tb)
+  File "/usr/lib/python3.7/site-packages/sqlalchemy/engine/base.py", line 1244, in _execute_context
+    cursor, statement, parameters, context
+  File "/usr/lib/python3.7/site-packages/sqlalchemy/engine/default.py", line 550, in do_execute
+    cursor.execute(statement, parameters)
+sqlalchemy.exc.IntegrityError: (sqlite3.IntegrityError) NOT NULL constraint failed: t_zayavka.c_file_passed
+[SQL: INSERT INTO t_zayavka (c_id_copyriter, c_id_zakaz, c_id_state, c_create_date, c_comments) VALUES (?, ?, ?, ?, ?)]
+[parameters: (2, '1', 1, '17.06.2019, 16:31:09', '')]
+(Background on this error at: http://sqlalche.me/e/gkpj)
+[2019-06-17 22:06:37,399] {/usr/lib/python3.7/site-packages/flask/app.py:1761} ERROR - Exception on /client/view/1 [GET]
+Traceback (most recent call last):
+  File "/usr/lib/python3.7/site-packages/flask/app.py", line 2292, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/usr/lib/python3.7/site-packages/flask/app.py", line 1815, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/usr/lib/python3.7/site-packages/flask/app.py", line 1718, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/usr/lib/python3.7/site-packages/flask/_compat.py", line 35, in reraise
+    raise value
+  File "/usr/lib/python3.7/site-packages/flask/app.py", line 1813, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/usr/lib/python3.7/site-packages/flask/app.py", line 1799, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "server.py", line 339, in client_view
+    return render_template("service-client-view.html",fio=session['user_fio'],data=ret_data,message=m,uploaded_data=uploaded_data,random_number =random_number )
+  File "/usr/lib/python3.7/site-packages/werkzeug/local.py", line 377, in <lambda>
+    __getitem__ = lambda x, i: x._get_current_object()[i]
+  File "/usr/lib/python3.7/site-packages/flask/sessions.py", line 83, in __getitem__
+    return super(SecureCookieSession, self).__getitem__(key)
+KeyError: 'user_fio'
+[2019-06-18 01:27:51,763] {/usr/lib/python3.7/site-packages/flask/app.py:1761} ERROR - Exception on /client/list [GET]
+Traceback (most recent call last):
+  File "/usr/lib/python3.7/site-packages/flask/app.py", line 2292, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/usr/lib/python3.7/site-packages/flask/app.py", line 1815, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/usr/lib/python3.7/site-packages/flask/app.py", line 1718, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/usr/lib/python3.7/site-packages/flask/_compat.py", line 35, in reraise
+    raise value
+  File "/usr/lib/python3.7/site-packages/flask/app.py", line 1813, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/usr/lib/python3.7/site-packages/flask/app.py", line 1799, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "server.py", line 128, in client_list
+    money = z['']
+KeyError: ''
+[2019-06-18 01:41:27,930] {/usr/lib/python3.7/site-packages/flask/app.py:1761} ERROR - Exception on /client/list [GET]
+Traceback (most recent call last):
+  File "/usr/lib/python3.7/site-packages/flask/app.py", line 2292, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/usr/lib/python3.7/site-packages/flask/app.py", line 1815, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/usr/lib/python3.7/site-packages/flask/app.py", line 1718, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/usr/lib/python3.7/site-packages/flask/_compat.py", line 35, in reraise
+    raise value
+  File "/usr/lib/python3.7/site-packages/flask/app.py", line 1813, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/usr/lib/python3.7/site-packages/flask/app.py", line 1799, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "server.py", line 129, in client_list
+    h_money = z['c_holded_money']
+KeyError: 'c_holded_money'
+[2019-06-18 01:42:31,115] {/usr/lib/python3.7/site-packages/flask/app.py:1761} ERROR - Exception on /client/list [GET]
+Traceback (most recent call last):
+  File "/usr/lib/python3.7/site-packages/flask/app.py", line 2292, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/usr/lib/python3.7/site-packages/flask/app.py", line 1815, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/usr/lib/python3.7/site-packages/flask/app.py", line 1718, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/usr/lib/python3.7/site-packages/flask/_compat.py", line 35, in reraise
+    raise value
+  File "/usr/lib/python3.7/site-packages/flask/app.py", line 1813, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/usr/lib/python3.7/site-packages/flask/app.py", line 1799, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "server.py", line 130, in client_list
+    h_money = z['c_holded_money']
+KeyError: 'c_holded_money'
+[2019-06-18 01:43:44,354] {server.py:54} INFO - Created t_users table
+[2019-06-18 01:43:44,477] {server.py:67} INFO - Created t_zakaz table
+[2019-06-18 01:43:44,601] {server.py:80} INFO - Created t_zayavka table
+[2019-06-18 01:43:48,513] {/usr/lib/python3.7/site-packages/flask/app.py:1761} ERROR - Exception on /client/list [GET]
+Traceback (most recent call last):
+  File "/usr/lib/python3.7/site-packages/flask/app.py", line 2292, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/usr/lib/python3.7/site-packages/flask/app.py", line 1815, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/usr/lib/python3.7/site-packages/flask/app.py", line 1718, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/usr/lib/python3.7/site-packages/flask/_compat.py", line 35, in reraise
+    raise value
+  File "/usr/lib/python3.7/site-packages/flask/app.py", line 1813, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/usr/lib/python3.7/site-packages/flask/app.py", line 1799, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "server.py", line 129, in client_list
+    money = z['c_owned_money']
+TypeError: 'NoneType' object is not subscriptable
+[2019-06-18 01:51:16,885] {/usr/lib/python3.7/site-packages/flask/app.py:1761} ERROR - Exception on /copyriter/trytake/1 [GET]
+Traceback (most recent call last):
+  File "/usr/lib/python3.7/site-packages/sqlalchemy/engine/base.py", line 1244, in _execute_context
+    cursor, statement, parameters, context
+  File "/usr/lib/python3.7/site-packages/sqlalchemy/engine/default.py", line 550, in do_execute
+    cursor.execute(statement, parameters)
+sqlite3.IntegrityError: NOT NULL constraint failed: t_zayavka.c_close_date
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/usr/lib/python3.7/site-packages/flask/app.py", line 2292, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/usr/lib/python3.7/site-packages/flask/app.py", line 1815, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/usr/lib/python3.7/site-packages/flask/app.py", line 1718, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/usr/lib/python3.7/site-packages/flask/_compat.py", line 35, in reraise
+    raise value
+  File "/usr/lib/python3.7/site-packages/flask/app.py", line 1813, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/usr/lib/python3.7/site-packages/flask/app.py", line 1799, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "server.py", line 210, in trytake
+    db_lock.acquire()
+  File "/usr/lib/python3.7/site-packages/dataset/table.py", line 80, in insert
+    res = self.db.executable.execute(self.table.insert(row))
+  File "/usr/lib/python3.7/site-packages/sqlalchemy/engine/base.py", line 988, in execute
+    return meth(self, multiparams, params)
+  File "/usr/lib/python3.7/site-packages/sqlalchemy/sql/elements.py", line 287, in _execute_on_connection
+    return connection._execute_clauseelement(self, multiparams, params)
+  File "/usr/lib/python3.7/site-packages/sqlalchemy/engine/base.py", line 1107, in _execute_clauseelement
+    distilled_params,
+  File "/usr/lib/python3.7/site-packages/sqlalchemy/engine/base.py", line 1248, in _execute_context
+    e, statement, parameters, cursor, context
+  File "/usr/lib/python3.7/site-packages/sqlalchemy/engine/base.py", line 1466, in _handle_dbapi_exception
+    util.raise_from_cause(sqlalchemy_exception, exc_info)
+  File "/usr/lib/python3.7/site-packages/sqlalchemy/util/compat.py", line 383, in raise_from_cause
+    reraise(type(exception), exception, tb=exc_tb, cause=cause)
+  File "/usr/lib/python3.7/site-packages/sqlalchemy/util/compat.py", line 128, in reraise
+    raise value.with_traceback(tb)
+  File "/usr/lib/python3.7/site-packages/sqlalchemy/engine/base.py", line 1244, in _execute_context
+    cursor, statement, parameters, context
+  File "/usr/lib/python3.7/site-packages/sqlalchemy/engine/default.py", line 550, in do_execute
+    cursor.execute(statement, parameters)
+sqlalchemy.exc.IntegrityError: (sqlite3.IntegrityError) NOT NULL constraint failed: t_zayavka.c_close_date
+[SQL: INSERT INTO t_zayavka (c_id_copyriter, c_id_zakaz, c_id_state, c_create_date, c_file_passed, c_comments) VALUES (?, ?, ?, ?, ?, ?)]
+[parameters: (2, '1', 1, '18.06.2019, 01:51:16', '', '')]
+(Background on this error at: http://sqlalche.me/e/gkpj)
+[2019-06-18 01:55:12,106] {/usr/lib/python3.7/site-packages/flask/app.py:1761} ERROR - Exception on /copyriter/list [GET]
+Traceback (most recent call last):
+  File "/usr/lib/python3.7/site-packages/sqlalchemy/engine/base.py", line 1179, in _execute_context
+    context = constructor(dialect, self, conn, *args)
+  File "/usr/lib/python3.7/site-packages/sqlalchemy/engine/default.py", line 905, in _init_statement
+    self.cursor = self.create_cursor()
+  File "/usr/lib/python3.7/site-packages/sqlalchemy/engine/default.py", line 1038, in create_cursor
+    return self._dbapi_connection.cursor()
+  File "/usr/lib/python3.7/site-packages/sqlalchemy/pool/base.py", line 965, in cursor
+    return self.connection.cursor(*args, **kwargs)
+sqlite3.ProgrammingError: SQLite objects created in a thread can only be used in that same thread. The object was created in thread id 139961642366464 and this is thread id 139961605224192.
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/lib/python3.7/site-packages/sqlalchemy/engine/base.py", line 739, in _rollback_impl
+    self.engine.dialect.do_rollback(self.connection)
+  File "/usr/lib/python3.7/site-packages/sqlalchemy/engine/default.py", line 500, in do_rollback
+    dbapi_connection.rollback()
+sqlite3.ProgrammingError: SQLite objects created in a thread can only be used in that same thread. The object was created in thread id 139961642366464 and this is thread id 139961605224192.
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/usr/lib/python3.7/site-packages/flask/app.py", line 2292, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/usr/lib/python3.7/site-packages/flask/app.py", line 1815, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/usr/lib/python3.7/site-packages/flask/app.py", line 1718, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/usr/lib/python3.7/site-packages/flask/_compat.py", line 35, in reraise
+    raise value
+  File "/usr/lib/python3.7/site-packages/flask/app.py", line 1813, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/usr/lib/python3.7/site-packages/flask/app.py", line 1799, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "server.py", line 124, in copyriter_list
+    u=db['t_users'].find_one(c_id=session['user_id'])
+  File "/usr/lib/python3.7/site-packages/dataset/table.py", line 505, in find_one
+    if not self.exists:
+  File "/usr/lib/python3.7/site-packages/dataset/table.py", line 41, in exists
+    return self.name in self.db
+  File "/usr/lib/python3.7/site-packages/dataset/database.py", line 147, in __contains__
+    return normalize_table_name(table_name) in self.tables
+  File "/usr/lib/python3.7/site-packages/dataset/database.py", line 142, in tables
+    return self.inspect.get_table_names(schema=self.schema)
+  File "<string>", line 2, in get_table_names
+  File "/usr/lib/python3.7/site-packages/sqlalchemy/util/deprecations.py", line 130, in warned
+    return fn(*args, **kwargs)
+  File "/usr/lib/python3.7/site-packages/sqlalchemy/engine/reflection.py", line 202, in get_table_names
+    self.bind, schema, info_cache=self.info_cache
+  File "<string>", line 2, in get_table_names
+  File "/usr/lib/python3.7/site-packages/sqlalchemy/engine/reflection.py", line 55, in cache
+    ret = fn(self, con, *args, **kw)
+  File "/usr/lib/python3.7/site-packages/sqlalchemy/dialects/sqlite/base.py", line 1536, in get_table_names
+    rs = connection.execute(s)
+  File "/usr/lib/python3.7/site-packages/sqlalchemy/engine/base.py", line 982, in execute
+    return self._execute_text(object_, multiparams, params)
+  File "/usr/lib/python3.7/site-packages/sqlalchemy/engine/base.py", line 1155, in _execute_text
+    parameters,
+  File "/usr/lib/python3.7/site-packages/sqlalchemy/engine/base.py", line 1182, in _execute_context
+    e, util.text_type(statement), parameters, None, None
+  File "/usr/lib/python3.7/site-packages/sqlalchemy/engine/base.py", line 1461, in _handle_dbapi_exception
+    self._autorollback()
+  File "/usr/lib/python3.7/site-packages/sqlalchemy/util/langhelpers.py", line 79, in __exit__
+    compat.reraise(type_, value, traceback)
+  File "/usr/lib/python3.7/site-packages/sqlalchemy/util/compat.py", line 129, in reraise
+    raise value
+  File "/usr/lib/python3.7/site-packages/sqlalchemy/engine/base.py", line 1461, in _handle_dbapi_exception
+    self._autorollback()
+  File "/usr/lib/python3.7/site-packages/sqlalchemy/engine/base.py", line 867, in _autorollback
+    self._root._rollback_impl()
+  File "/usr/lib/python3.7/site-packages/sqlalchemy/engine/base.py", line 741, in _rollback_impl
+    self._handle_dbapi_exception(e, None, None, None, None)
+  File "/usr/lib/python3.7/site-packages/sqlalchemy/engine/base.py", line 1378, in _handle_dbapi_exception
+    exc_info,
+  File "/usr/lib/python3.7/site-packages/sqlalchemy/util/compat.py", line 383, in raise_from_cause
+    reraise(type(exception), exception, tb=exc_tb, cause=cause)
+  File "/usr/lib/python3.7/site-packages/sqlalchemy/util/compat.py", line 128, in reraise
+    raise value.with_traceback(tb)
+  File "/usr/lib/python3.7/site-packages/sqlalchemy/engine/base.py", line 739, in _rollback_impl
+    self.engine.dialect.do_rollback(self.connection)
+  File "/usr/lib/python3.7/site-packages/sqlalchemy/engine/default.py", line 500, in do_rollback
+    dbapi_connection.rollback()
+sqlalchemy.exc.ProgrammingError: (sqlite3.ProgrammingError) SQLite objects created in a thread can only be used in that same thread. The object was created in thread id 139961642366464 and this is thread id 139961605224192.
+(Background on this error at: http://sqlalche.me/e/f405)
+[2019-06-18 02:11:44,353] {/usr/lib/python3.7/site-packages/flask/app.py:1761} ERROR - Exception on /copyriter/passpage/1 [GET]
+Traceback (most recent call last):
+  File "/usr/lib/python3.7/site-packages/flask/app.py", line 2292, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/usr/lib/python3.7/site-packages/flask/app.py", line 1815, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/usr/lib/python3.7/site-packages/flask/app.py", line 1718, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/usr/lib/python3.7/site-packages/flask/_compat.py", line 35, in reraise
+    raise value
+  File "/usr/lib/python3.7/site-packages/flask/app.py", line 1813, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/usr/lib/python3.7/site-packages/flask/app.py", line 1799, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "server.py", line 543, in copyriter_passpage
+    uploaded_data=uploaded_data,random_number =random_number)
+  File "/usr/lib/python3.7/site-packages/flask/templating.py", line 134, in render_template
+    return _render(ctx.app.jinja_env.get_or_select_template(template_name_or_list),
+  File "/usr/lib/python3.7/site-packages/jinja2/environment.py", line 869, in get_or_select_template
+    return self.get_template(template_name_or_list, parent, globals)
+  File "/usr/lib/python3.7/site-packages/jinja2/environment.py", line 830, in get_template
+    return self._load_template(name, self.make_globals(globals))
+  File "/usr/lib/python3.7/site-packages/jinja2/environment.py", line 804, in _load_template
+    template = self.loader.load(self, name, globals)
+  File "/usr/lib/python3.7/site-packages/jinja2/loaders.py", line 125, in load
+    code = environment.compile(source, name, filename)
+  File "/usr/lib/python3.7/site-packages/jinja2/environment.py", line 591, in compile
+    self.handle_exception(exc_info, source_hint=source_hint)
+  File "/usr/lib/python3.7/site-packages/jinja2/environment.py", line 780, in handle_exception
+    reraise(exc_type, exc_value, tb)
+  File "/usr/lib/python3.7/site-packages/jinja2/_compat.py", line 37, in reraise
+    raise value.with_traceback(tb)
+  File "/home/awengar/test/yar/Copyriters/templates/service-copyriter-pass.htm", line 62, in template
+    {% else if data['state_zayavka'] ==  4 %}
+  File "/usr/lib/python3.7/site-packages/jinja2/environment.py", line 497, in _parse
+    return Parser(self, source, name, encode_filename(filename)).parse()
+  File "/usr/lib/python3.7/site-packages/jinja2/parser.py", line 901, in parse
+    result = nodes.Template(self.subparse(), lineno=1)
+  File "/usr/lib/python3.7/site-packages/jinja2/parser.py", line 883, in subparse
+    rv = self.parse_statement()
+  File "/usr/lib/python3.7/site-packages/jinja2/parser.py", line 130, in parse_statement
+    return getattr(self, 'parse_' + self.stream.current.value)()
+  File "/usr/lib/python3.7/site-packages/jinja2/parser.py", line 212, in parse_if
+    node.body = self.parse_statements(('name:elif', 'name:else',
+  File "/usr/lib/python3.7/site-packages/jinja2/parser.py", line 165, in parse_statements
+    result = self.subparse(end_tokens)
+  File "/usr/lib/python3.7/site-packages/jinja2/parser.py", line 883, in subparse
+    rv = self.parse_statement()
+  File "/usr/lib/python3.7/site-packages/jinja2/parser.py", line 130, in parse_statement
+    return getattr(self, 'parse_' + self.stream.current.value)()
+  File "/usr/lib/python3.7/site-packages/jinja2/parser.py", line 223, in parse_if
+    drop_needle=True)
+  File "/usr/lib/python3.7/site-packages/jinja2/parser.py", line 164, in parse_statements
+    self.stream.expect('block_end')
+  File "/usr/lib/python3.7/site-packages/jinja2/lexer.py", line 384, in expect
+    self.name, self.filename)
+jinja2.exceptions.TemplateSyntaxError: expected token 'end of statement block', got 'if'

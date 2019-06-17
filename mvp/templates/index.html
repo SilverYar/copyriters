@@ -1,0 +1,54 @@
+<html>
+<head>
+</head>
+<body>
+    {% if message %}
+        <div style="position: absolute; left:10px; top:10px; background-color:#c0f0c0" onclick="this.style.display='None';">
+            {{ message }}
+        </div>
+    {% endif %}
+    <div style="position:absolute; left:200px; top:200px">
+        <div><center>Login</center></div>
+        <form action="/login">
+            <p>
+                <label>Login</label>
+                <input name="login_field" type='text' />
+            </p>
+            <p>
+            <label>Password</label>
+            <input name="password_field" type='text' />
+            </p>
+            <input type="submit" value="Login"/>
+        </form>
+    </div>
+    <div style="position:absolute; left:600px; top:200px">
+        <div><center>Register</center></div>
+        <form action="/register">
+             <p>
+                <label>Login</label>
+                <input name="login_field" type='text' />
+            </p>
+            <p>
+                <label>Password</label>
+                <input name="password_field" type='text' />
+            </p>
+            <p>
+                <label>FIO</label>
+                <input name="fio_field" type='text' />
+            </p>
+            <p>
+                <label>Email</label>
+                <input name="email_field" type='text' />
+            </p>
+            <p>
+                <label>Role</label>
+                <select size="2" multiple name="role_field">
+                    <option selected value="Client">Client</option>
+                    <option value="Copyriter">Copyriter</option>
+                </select>
+            </p>
+            <input type="submit" value="Register"/>
+        </form>
+    </div>
+</body>
+</html>

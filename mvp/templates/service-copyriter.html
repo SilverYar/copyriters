@@ -1,0 +1,107 @@
+<html>
+<head>
+<script 
+			  src="https://code.jquery.com/jquery-3.4.1.js"
+			  integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
+			  crossorigin="anonymous"></script>
+			  
+<script>
+function RefreshTableApp(){
+    var tab = $("#app_table");
+    var res = $.ajax({
+			type: "GET",
+			url: "/copyriter/listapp",
+			async: false
+		});
+    setTimeout(RefreshTableApp, 30000);
+    if (res.responseJSON.status != "Success"){
+        alert(res.responseJSON.status);
+        return
+    }
+    tab.html("");
+    data_list = res.responseJSON.data;
+    for (var e in res.responseJSON.data){
+        var el = res.responseJSON.data[e];
+        if (el.state == 1){
+            if (el.is_taken != 1){
+                tab.append("<tr><td>$"+el.money+"</td><td>"+el.duration+" days</td><td>"+
+                    el.caption+"</td><td>"+el.date+"</td><td>"+
+                    el.is_taken+"</td><td><button class='view'>View</button><button class='take'>"+
+                    "Try take</button></td><td style='display:none'>"+el.descr+
+                    "</td><td style='display:none'>"+el.zid+"</td><tr>");
+            }
+            else{
+                tab.append("<tr><td>$"+el.money+"</td><td>"+el.duration+" days</td><td>"+
+                    el.caption+"</td><td>"+el.date+"</td><td>"+
+                    el.is_taken+"</td><td><button class='view'>View</button><span>Waiting confirm</span></td><td style='display:none'>"+el.descr+
+                    "</td><td style='display:none'>"+el.zid+"</td><tr>");
+            }
+        }
+        else if (el.state == 2){
+            tab.append("<tr><td>$"+el.money+"</td><td>"+el.duration+" days</td><td>"+
+                el.caption+"</td><td>"+el.date+"</td><td>"+
+                el.is_taken+"</td><td><button class='view'>View</button><a  href='/copyriter/passpage/"+
+                el.zid+"'>Pass</a></td><td style='display:none'>"+el.descr+
+                "</td><td style='display:none'>"+el.zid+"</td><tr>");
+        }
+        else if (el.state == 3){
+            tab.append("<tr><td>$"+el.money+"</td><td>"+el.duration+" days</td><td>"+
+                el.caption+"</td><td>"+el.date+"</td><td>"+
+                el.is_taken+"</td><td><button class='view'>View</button><span>Finished</span></td><td style='display:none'>"+el.descr+
+                "</td><td style='display:none'>"+el.zid+"</td><tr>");
+        }
+        else if (el.state == 4){
+            tab.append("<tr><td>$"+el.money+"</td><td>"+el.duration+" days</td><td>"+
+                el.caption+"</td><td>"+el.date+"</td><td>"+
+                el.is_taken+"</td><td><button class='view'>View</button><span>Canceled</span></td><td style='display:none'>"+el.descr+
+                "</td><td style='display:none'>"+el.zid+"</td><tr>");
+        }
+    }
+    $("#app_table button.view").click(
+        function (e){
+            $("#descr").val(e.target.parentElement.nextSibling.innerHTML);
+        }
+    );
+    $("#app_table button.take").click(
+        function (e){
+            var id = e.target.parentElement.nextSibling.nextSibling.innerHTML;
+            var res = $.ajax({
+                type: "GET",
+                url: "/copyriter/trytake/"+id,
+                async: false
+            });
+            if (res.responseJSON.status != "Success"){
+                alert(res.responseJSON.status);
+                return
+            }
+            RefreshTableApp();
+        }
+    )
+}
+$(document).ready(function(){
+    RefreshTableApp();
+});
+</script>
+</head>
+<body>
+    <h3>Welcome {{ fio }},copyriter(<a href="/logout">logout</a>)</h3>
+    <h4>Your money is ${{ money }}</h4>
+    <div>
+        <div>List applications</div>
+        <table >
+            <thead>
+            <tr><td>Money</td><td>Duration</td><td>Caption</td><td>Creation date</td><td>Is taken</td></tr>
+            </thead>
+            <tbody id="app_table">
+            </tbody>
+        </table>
+    </div>
+    <div>
+        <div>Description</div>
+        <div>
+        <textarea  readonly rows="10" cols="45" name="descr_field" type='text' id="descr">
+        </textarea>
+        </div>
+    </div>
+</body>
+</html>

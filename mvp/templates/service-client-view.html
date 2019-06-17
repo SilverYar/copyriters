@@ -1,0 +1,133 @@
+<html>
+<head>
+<script 
+			  src="https://code.jquery.com/jquery-3.4.1.js"
+			  integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
+			  crossorigin="anonymous"></script>
+<script>
+    function ViewComments(){
+        setTimeout(ViewComments, 7000);
+        var com = $("#dialog_text");
+        var res = $.ajax({
+                type: "GET",
+                url: "/client/comments/{{ data['zid'] }}",
+                async: false
+            });
+        if (res.responseJSON.status != "Success"){
+            alert(res.responseJSON.status);
+            return
+        }
+        com.val(res.responseJSON.data);
+    }
+    function MakeComment(){
+        var com = $("#dialog_mes").val();
+        var res = $.ajax({
+                type: "POST",
+                url: "/client/comment/{{ data['zid'] }}",
+                data: {'mes':com},
+                async: false
+            });
+        if (res.responseJSON.status != "Success"){
+            alert(res.responseJSON.status);
+            return
+        }
+        $("#dialog_mes").val("");
+    }
+    $(document).ready(function () {
+        var psconsole = $('#dialog_text');
+        if(psconsole.length)
+            psconsole.scrollTop(psconsole[0].scrollHeight - psconsole.height());
+        ViewComments();
+        $("#make_comment").click(function(e){
+            MakeComment();
+        });
+        $("#confirm").click(function(e){
+            var res = $.ajax({
+                    type: "GET",
+                    url: "/client/finish/{{ data['zid'] }}/1/0",
+                    async: false
+                });
+            if (res.responseJSON.status != "Success"){
+                alert(res.responseJSON.status);
+                return
+            }
+            alert("You confirmed application and payed ${{ data['money'] }} money");
+            window.location="/client/view/{{ data['zid'] }}"
+        });
+        $("reject_stay").click(function(e){
+            var res = $.ajax({
+                    type: "GET",
+                    url: "/client/finish/{{ data['zid'] }}/0/1",
+                    async: false
+                });
+            if (res.responseJSON.status != "Success"){
+                alert(res.responseJSON.status);
+                return
+            }
+            alert("You rejected application and searching new copyriter");
+            window.location="/client/list";
+        });
+        $("reject_drop").click(function(e){
+            var res = $.ajax({
+                    type: "GET",
+                    url: "/client/finish/{{ data['zid'] }}/0/0",
+                    async: false
+                });
+            if (res.responseJSON.status != "Success"){
+                alert(res.responseJSON.status);
+                return
+            }
+            alert("You rejected application");
+            window.location="/client/list";
+        });
+    });
+</script>
+</head>
+<body>
+    <h3>Welcome {{ fio }},client(<a href="/logout">logout</a>)</h3>
+     {% if message %}
+        <div style="position: absolute; left:100px; top:10px; background-color:#c0f0c0" onclick="this.style.display='None';">
+            {{ message }}
+        </div>
+    {% endif %}
+    <div>
+        <div>View application</div>
+         {% if message %}
+            <h3>{{ message }}<h3>
+        {% endif %}
+        {% if uploaded_data %}
+                <div>
+                    <a href="/client/uploads/{{ data['zid'] }}?x={{ random_number  }}">{{ uploaded_data }}</a>
+                </div>
+                <div>
+                    <div>
+                        <input type="button" id="confirm" value="Confirm and pay"/>
+                        <input type="button" id="reject_stay" value="Reject and stay"/>
+                        <input type="button" id="reject_drop" value="Reject and cancel"/>
+                    </div>
+                </div>
+        {% endif %}
+        {% if data %}
+            <h4>{{ data['caption'] }} (${{ data['money'] }})</h4>
+                <h4>Copyriter:{{ data['copyriter_fio'] }}</h4>
+                <h5>Execute from {{ data['taken_at'] }} during {{ data['duration'] }} days</h5>
+                <div>
+                    <textarea readonly  rows="10" cols="45" name="descr_field" type='text' id="descr">{{ data['descr'] }}</textarea>
+                </div>
+            </div>
+        {% endif %}
+    </div>
+    <div>
+        <h4>Dialog</h4>
+        <div>
+            <textarea readonly rows="10" cols="45" id="dialog_text"></textarea>
+        </div>
+        <div>
+            <textarea type="text" cols="45" id='dialog_mes' ></textarea>
+        </div>
+        <div>
+            <input type="button" id="make_comment" value="Comment"/>
+        </div>
+    </div>
+</body>
+</html>
